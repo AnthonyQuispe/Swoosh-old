@@ -1,7 +1,12 @@
 import { Routes, Route } from "react-router-dom";
+import Dashboard from "./Pages/Dashboard/Dashboard";
 
 function App() {
-  return <Routes></Routes>;
+  return (
+    <Routes>
+      <Route path="/" element={<Dashboard />} />
+    </Routes>
+  );
 }
 
 export default App;

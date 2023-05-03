@@ -1,0 +1,69 @@
+.bottomNav-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bottomNav-checkin-button {
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 30px;
+  border: none;
+  background-color: white;
+  color: #00c0fe;
+  margin: 20px 0;
+}
+
+.bottomNav-checkin-button-img {
+  height: 30px;
+  width: 30spx;
+}
+
+.bottomNav-container--details {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: white;
+  width: 100vw;
+  height: 17vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bottomNav-people-button {
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 33vw;
+  height: 11vw;
+  border: none;
+  background-color: #00c0fe;
+}
+
+.bottomNav-people-button-img {
+  height: 30px;
+  width: 30spx;
+  color: #fff;
+}
+
+.bottomNav-container--details-buttons {
+  display: flex;
+  margin: 0.5rem 0;
+}
+
+.bottomNav-container--details-extender {
+  width: 10vw;
+  border-radius: 20px;
+  height: 11vw;
+  border: none;
+  background-color: #00c0fe;
+}

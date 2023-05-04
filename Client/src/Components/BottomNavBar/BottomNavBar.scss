@@ -32,7 +32,7 @@
   border-top-right-radius: 10px;
   background-color: white;
   width: 100vw;
-  height: 17vw;
+  height: 17vw !important;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -63,7 +63,7 @@
 .bottomNav-container--details-extender {
   width: 10vw;
   border-radius: 20px;
-  height: 11vw;
+  height: 1vw;
   border: none;
   background-color: #00c0fe;
 }

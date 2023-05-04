@@ -2,6 +2,8 @@ import CheckIn from "../../assets/Icons/Check-in.svg";
 import PeopleIcon from "../../assets/Icons/group.png";
 import ProfileIcon from "../../assets/Icons/Profile.png";
 import LeaderboardIcon from "../../assets/Icons/crown.png";
+import Draggable from "react-draggable";
+
 import "./BottomNavBar.scss";
 
 const BottomNav = () => {

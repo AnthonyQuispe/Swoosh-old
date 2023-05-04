@@ -1,0 +1,46 @@
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-container__chat-button {
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10vw;
+  height: 10vw;
+  border: none;
+  background-color: white;
+  color: #00c0fe;
+  margin: 20px 0;
+}
+
+.nav-button__icon {
+  height: 35px;
+  width: 35spx;
+}
+
+.nav-container__settings-button {
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10vw;
+  height: 10vw;
+  border: none;
+  color: #00c0fe;
+}
+
+.nav-dropdown__select {
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 30vw;
+  height: 10vw;
+  border: none;
+  background-color: white;
+  color: #00c0fe;
+}

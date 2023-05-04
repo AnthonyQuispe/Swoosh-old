@@ -8,11 +8,14 @@ import Blocked from "../../assets/Icons/block.png";
 import Notification from "../../assets/Icons/notification.png";
 import Account from "../../assets/Icons/user.png";
 
-const Settings = () => {
+const Settings = ({ setShowSettings }) => {
+  const handleSettingClick = () => {
+    setShowSettings(false);
+  };
   return (
     <div className="settings">
       <div className="settings__top">
-        <button className="settings__close-button">
+        <button className="settings__close-button" onClick={handleSettingClick}>
           <img className="settings__close-button-icon" src={Close} alt="chat" />
         </button>
         <p className="settings__header">Settings</p>

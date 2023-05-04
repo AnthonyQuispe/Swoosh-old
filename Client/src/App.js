@@ -1,10 +1,15 @@
 import { Routes, Route } from "react-router-dom";
-import Dashboard from "./Pages/Dashboard/Dashboard";
+import Dashboard from "./Components/Dashboard/Dashboard";
+import Settings from "./Pages/Settings/Settings";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Dashboard />} />
+      <Route path="/basketball" element={<Dashboard />} />
+      <Route path="/football" element={<Dashboard />} />
+      <Route path="/futbol" element={<Dashboard />} />
+      <Route path="/settings" element={<Settings />} />
     </Routes>
   );
 }

@@ -1,4 +1,4 @@
-const functions = require("firebase-functions");
+// const functions = require("firebase-functions");
 const axios = require("axios");
 const cors = require("cors")({ origin: true });
 
@@ -13,7 +13,7 @@ exports.getLatLng = functions.https.onRequest(async (req, res) => {
         {
           params: {
             address,
-            key: "YOUR_API_KEY",
+            key: "AIzaSyCCp8eriyAho7kWw59-a1s0XfNE0v0ckx8",
           },
         }
       );

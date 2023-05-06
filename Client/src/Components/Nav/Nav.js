@@ -2,7 +2,11 @@ import Gear from "../../assets/Icons/gear-icon.svg";
 import Chat from "../../assets/Icons/chatbubble-icon.svg";
 import "./Nav.scss";
 
-const Nav = () => {
+const Nav = ({ setShowSettings }) => {
+  const handleSettingClick = () => {
+    setShowSettings(true);
+  };
+
   return (
     <nav className="nav-container">
       <button className="nav-container__chat-button">
@@ -15,7 +19,10 @@ const Nav = () => {
           <option value="football">Football</option>
         </select>
       </div>
-      <button className="nav-container__settings-button">
+      <button
+        className="nav-container__settings-button"
+        onClick={handleSettingClick}
+      >
         <img className="nav-button__icon" src={Gear} alt="settings" />
       </button>
     </nav>

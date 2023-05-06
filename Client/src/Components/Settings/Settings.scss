@@ -1,0 +1,53 @@
+.settings__close-button-icon {
+  height: 2vh;
+  width: 2vh;
+  background: white;
+  margin: 0 1.5rem;
+}
+
+.settings__close-button {
+  height: 3vh;
+  border: none;
+  background: white;
+}
+
+.settings__top {
+  display: flex;
+  align-items: center;
+  background: white;
+  height: 8vh;
+}
+
+.settings__header {
+  font-weight: 600;
+}
+
+.settings {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  justify-content: space-evenly;
+  position: absolute;
+  z-index: 1;
+}
+
+.settings__item {
+  border: 1px solid #edebf0;
+
+  background-color: white;
+  height: 14vh;
+  display: flex;
+  align-items: center;
+}
+
+.settings__item-text {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.settings__item-img {
+  height: 30px;
+  width: 30px;
+  margin: 0 1rem 0 1rem;
+}

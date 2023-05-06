@@ -1,6 +1,8 @@
-body {
+@use "../../styles/partials/global" as *;
+
+.dashboard__container {
   background-image: url("../../assets//Icons//map_placeholder.png");
   background-color: #cccccc;
   background-position: center;
-  height: 400px;
+  height: 100vh;
 }

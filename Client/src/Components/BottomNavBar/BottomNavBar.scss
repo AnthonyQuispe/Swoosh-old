@@ -43,7 +43,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 33vw;
+  width: 25vw;
   height: 11vw;
   border: none;
   background-color: #00c0fe;
@@ -58,6 +58,8 @@
 .bottomNav-container--details-buttons {
   display: flex;
   margin: 0.5rem 0;
+  justify-content: space-evenly;
+  width: 100%;
 }
 
 .bottomNav-container--details-extender {

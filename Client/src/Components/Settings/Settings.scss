@@ -7,7 +7,6 @@
 
 .settings__close-button {
   height: 3vh;
-  width: 3vh;
   border: none;
   background: white;
 }
@@ -16,11 +15,10 @@
   display: flex;
   align-items: center;
   background: white;
-  height: 5vh;
+  height: 8vh;
 }
 
 .settings__header {
-  margin: 0 0 0 5rem;
   font-weight: 600;
 }
 
@@ -28,14 +26,15 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  width: 100vw;
   justify-content: space-evenly;
-  position: relative;
+  position: absolute;
   z-index: 1;
 }
 
 .settings__item {
   border: 1px solid #edebf0;
-  border-radius: 5px; /* optional: adds rounded corners */
+
   background-color: white;
   height: 14vh;
   display: flex;

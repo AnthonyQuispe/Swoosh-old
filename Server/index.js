@@ -13,7 +13,7 @@ exports.getLatLng = functions.https.onRequest(async (req, res) => {
         {
           params: {
             address,
-            key: "AIzaSyCCp8eriyAho7kWw59-a1s0XfNE0v0ckx8",
+            key: "Api-key",
           },
         }
       );

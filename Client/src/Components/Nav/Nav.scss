@@ -17,12 +17,12 @@
   border: none;
   background-color: white;
   color: #00c0fe;
-  margin: 20px 0;
+  margin: 20px 1rem;
 }
 
 .nav-button__icon {
-  height: 35px;
-  width: 35spx;
+  height: 10bw;
+  width: 10vw;
 }
 
 .nav-container__settings-button {
@@ -34,6 +34,7 @@
   height: 10vw;
   border: none;
   color: #00c0fe;
+  margin: 0 1rem;
 }
 
 .nav-dropdown__select {

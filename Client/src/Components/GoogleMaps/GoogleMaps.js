@@ -6,7 +6,7 @@ import profileIcon from "../../assets/Images/Facetune_04-04-2023-11-44-41.jpg";
 function Google({ center = { lat: 26.1224, lng: -80.1373 } }) {
   useEffect(() => {
     const loader = new Loader({
-      apiKey: process.env.REACT_APP_API_KEY,
+      apiKey: "",
       version: "beta",
     });
 
@@ -29,6 +29,13 @@ function Google({ center = { lat: 26.1224, lng: -80.1373 } }) {
           // create marker at current location and add it to the map
           const marker = new google.maps.Marker({
             position: { lat: latitude, lng: longitude },
+            map: map,
+            icon: profileMarker,
+            animation: google.maps.Animation.DROP,
+          });
+
+          const testMarker = new google.maps.Marker({
+            position: { lat: 26.035148859786357, lng: -80.27636072861866 },
             map: map,
             icon: profileMarker,
             animation: google.maps.Animation.DROP,

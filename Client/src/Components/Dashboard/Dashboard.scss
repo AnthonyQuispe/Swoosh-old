@@ -7,3 +7,12 @@
 #map {
   height: 100%;
 }
+
+.profile-marker {
+  border: 2px solid red;
+  border-radius: 50%;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
+  background-color: white;
+  height: 100px;
+  width: 100px;
+}

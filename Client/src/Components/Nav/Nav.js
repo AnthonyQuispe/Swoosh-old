@@ -14,9 +14,9 @@ const Nav = ({ setShowSettings }) => {
       </button>
       <div className="nav-container__filter-dropdown">
         <select className="nav-dropdown__select">
+          <option value="#"></option>
           <option value="basketball">Basketball</option>
           <option value="futbol">Fútbol</option>
-          <option value="football">Football</option>
         </select>
       </div>
       <button

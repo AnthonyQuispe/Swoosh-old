@@ -19,9 +19,9 @@
 .sign__container--input {
   font-size: 1.25rem;
   border-radius: 10px;
-  margin: 0 10px;
   width: 78vw;
   height: 5vh;
+  padding: 0 0 0 1rem;
 
   &::placeholder {
     font-size: 1.25rem;
@@ -61,7 +61,7 @@
 .sign__container--nameInput {
   border-radius: 10px;
   margin: 0 10px;
-  width: 35vw;
+  width: 38vw;
   height: 5vh;
   text-align: center;
   font-size: 1.25rem;

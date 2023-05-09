@@ -1,9 +1,10 @@
 import "./SignUp.scss";
 import backArrow from "../../assets/Icons/previous.png";
 import { Link } from "react-router-dom";
+import { createUser } from "../../firebaseAuth";
 
 const SignUp = () => {
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const firstName = event.target.firstName.value;
     const lastName = event.target.lastName.value;
@@ -11,35 +12,27 @@ const SignUp = () => {
     const password = event.target.password.value;
     const confirmPassword = event.target.confirmPassword.value;
 
+    //Front-End Validation
     if (!firstName || !lastName) {
       alert("Please enter your first and last name.");
       return;
     }
-
-    // Validate email
     const emailRegex = /\S+@\S+\.\S+/;
     if (!emailRegex.test(email)) {
       alert("Please enter a valid email address.");
       return;
     }
-
-    // Validate password and confirm password
     if (password !== confirmPassword) {
       alert("Passwords do not match.");
       return;
     }
-
-    // All fields are valid, continue with submission
-    // TODO: Add logic to submit form data to backend API
-    console.log(handleSubmit);
-
-    console.log({
-      firstName,
-      lastName,
-      email,
-      password,
-      confirmPassword,
-    });
+    //Firebase Autentication
+    try {
+      await createUser(firstName, lastName, email, password);
+      // User created successfully, redirect or do something else
+    } catch (error) {
+      // Handle error
+    }
   };
 
   return (

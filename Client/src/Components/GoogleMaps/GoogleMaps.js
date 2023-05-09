@@ -6,7 +6,7 @@ import profileIcon from "../../assets/Images/Facetune_04-04-2023-11-44-41.jpg";
 function Google({ center = { lat: 26.1224, lng: -80.1373 } }) {
   useEffect(() => {
     const loader = new Loader({
-      apiKey: "AIzaSyCCp8eriyAho7kWw59-a1s0XfNE0v0ckx8",
+      apiKey: "",
       version: "beta",
     });
 

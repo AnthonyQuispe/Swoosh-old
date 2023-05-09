@@ -7,10 +7,20 @@ import Location from "../../assets/Icons/location.png";
 import Blocked from "../../assets/Icons/block.png";
 import Notification from "../../assets/Icons/notification.png";
 import Account from "../../assets/Icons/user.png";
+import { getAuth, signOut } from "firebase/auth";
+import { auth } from "../../firebase-config";
+import { useNavigate } from "react-router";
 
 const Settings = ({ setShowSettings }) => {
   const handleSettingClick = () => {
     setShowSettings(false);
+  };
+  let navigate = useNavigate();
+
+  const logout = async () => {
+    await signOut(auth);
+    alert("Logout Succesful!");
+    navigate("/");
   };
   return (
     <div className="settings">
@@ -70,7 +80,7 @@ const Settings = ({ setShowSettings }) => {
         <img className="settings__item-img" src={Info} alt="Info Button" />
         <p className="settings__item-text settings__item-text--about">About</p>
       </button>
-      <button className="settings__item">
+      <button className="settings__item" onClick={logout}>
         <img className="settings__item-img" src={Logout} alt="Logout Button" />
         <p className="settings__item-text settings__item-text--logout">
           Log Out

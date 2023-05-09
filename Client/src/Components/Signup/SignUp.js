@@ -2,8 +2,13 @@ import "./SignUp.scss";
 import backArrow from "../../assets/Icons/previous.png";
 import { Link } from "react-router-dom";
 import { createUser } from "../../firebaseAuth";
+import { useState } from "react";
+import { useNavigate } from "react-router";
 
 const SignUp = () => {
+  // const [RouteSign, setRouteSign] = useState(false);
+  let navigate = useNavigate();
+  //Validates form before passing it to Firebase Autentication
   const handleSubmit = async (event) => {
     event.preventDefault();
     const firstName = event.target.firstName.value;
@@ -29,9 +34,11 @@ const SignUp = () => {
     //Firebase Autentication
     try {
       await createUser(firstName, lastName, email, password);
-      // User created successfully, redirect or do something else
+      alert("Account created successfully!");
+      // setRouteSign(true);
+      navigate("/");
     } catch (error) {
-      // Handle error
+      alert("Account creation failed please try again");
     }
   };
 
@@ -40,6 +47,7 @@ const SignUp = () => {
       <Link to={`/`}>
         <img className="sign__backArrow" src={backArrow} alt="back icon" />
       </Link>
+      {/* {RouteSign && <Link to="/"></Link>} */}
       <h1 className="sign__header">Swoosh</h1>
       <h3 className="sign__title">Create your Account </h3>
       <div className="sign__name--container">

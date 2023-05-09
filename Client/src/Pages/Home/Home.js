@@ -1,13 +1,13 @@
 import "./Home.scss";
-import Highlights2 from "../../assets/Media/Swoosh3.mp4";
+import Highlights1 from "../../assets/Media/SwooshIOS.mp4";
 import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
     <div className="home">
       <div className="home__video">
-        <video autoPlay muted loop className="home__video-content">
-          <source src={Highlights2} type="video/mp4" />
+        <video autoPlay muted loop playsInline className="home__video-content">
+          <source src={Highlights1} type="video/mp4" />
         </video>
       </div>
       <h1 className="home__header">Swoosh</h1>

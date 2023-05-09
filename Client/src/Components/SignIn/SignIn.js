@@ -1,45 +1,28 @@
 import "./SignIn.scss";
 import backArrow from "../../assets/Icons/previous.png";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router";
 
 const SignIn = () => {
-  const handleSubmit = (event) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [RouteSign, setRouteSign] = useState(false);
+
+  let navigate = useNavigate();
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const firstName = event.target.firstName.value;
-    const lastName = event.target.lastName.value;
-    const email = event.target.email.value;
-    const password = event.target.password.value;
-    const confirmPassword = event.target.confirmPassword.value;
-
-    if (!firstName || !lastName) {
-      alert("Please enter your first and last name.");
-      return;
+    try {
+      const auth = getAuth();
+      await signInWithEmailAndPassword(auth, email, password);
+      // handle successful sign in
+      alert("Login Succesful!");
+      navigate("/dashboard");
+    } catch (error) {
+      alert("Invalid email or password");
     }
-
-    // Validate email
-    const emailRegex = /\S+@\S+\.\S+/;
-    if (!emailRegex.test(email)) {
-      alert("Please enter a valid email address.");
-      return;
-    }
-
-    // Validate password and confirm password
-    if (password !== confirmPassword) {
-      alert("Passwords do not match.");
-      return;
-    }
-
-    // All fields are valid, continue with submission
-    // TODO: Add logic to submit form data to backend API
-    console.log(handleSubmit);
-
-    console.log({
-      firstName,
-      lastName,
-      email,
-      password,
-      confirmPassword,
-    });
   };
 
   return (
@@ -57,6 +40,9 @@ const SignIn = () => {
           placeholder="Username"
           required
           className="sign__container--input"
+          onChange={(event) => {
+            setEmail(event.target.value);
+          }}
         />
       </div>
       <div className="sign__container">
@@ -67,6 +53,9 @@ const SignIn = () => {
           placeholder="Password"
           required
           className="sign__container--input"
+          onChange={(event) => {
+            setPassword(event.target.value);
+          }}
         />
       </div>
       <div className="checkbox-wrapper-19">

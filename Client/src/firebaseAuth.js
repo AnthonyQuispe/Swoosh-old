@@ -16,10 +16,13 @@ export const createUser = async (firstName, lastName, email, password) => {
 
     // // Store user profile in Firestore
     // const userDocRef = firestore().collection("users").doc(user.uid);
-    // await userDocRef.set({
-    //   displayName: user.displayName,
-    //   // Add other profile information you want to store in Firestore
-    // }, { merge: true });
+    // await userDocRef.set(
+    //   {
+    //     displayName: user.displayName,
+    //     // Add other profile information you want to store in Firestore
+    //   },
+    //   { merge: true }
+    // );
   } catch (error) {
     console.error("Error creating user:", error.message);
     throw error;

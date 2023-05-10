@@ -3,14 +3,13 @@ import backArrow from "../../assets/Icons/previous.png";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [RouteSign, setRouteSign] = useState(false);
-
-  let navigate = useNavigate();
+  const [userEmail, setUserEmail] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -19,7 +18,8 @@ const SignIn = () => {
       await signInWithEmailAndPassword(auth, email, password);
       // handle successful sign in
       alert("Login Succesful!");
-      navigate("/dashboard");
+      setUserEmail(auth.currentUser.email); // or auth.currentUser.uid
+      navigate("/dashboard", { state: { userEmail: auth.currentUser.email } });
     } catch (error) {
       alert("Invalid email or password");
     }

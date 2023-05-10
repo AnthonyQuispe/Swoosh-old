@@ -2,20 +2,24 @@ import Nav from "../Nav/Nav";
 import BottomNav from "../BottomNavBar/BottomNavBar";
 import Settings from "../Settings/Settings";
 import GoogleMaps from "../GoogleMaps/GoogleMaps";
-import { useState, useEffect } from "react";
-import { Loader } from "@googlemaps/js-api-loader";
-import profileIcon from "../../assets/Images/Facetune_04-04-2023-11-44-41.jpg";
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import "./Dashboard.scss";
-/* global google */
 
 function Dashboard() {
   const [showSettings, setShowSettings] = useState(false);
+  const location = useLocation();
+  const userEmail = location.state.userEmail;
+
+  console.log("userEmail in Dashboard:", userEmail);
 
   return (
     <div className="dashboard__container">
-      <GoogleMaps />
-      {showSettings && <Settings setShowSettings={setShowSettings} />}
-      <Nav setShowSettings={setShowSettings} />
+      <GoogleMaps userEmail={userEmail} />
+      {showSettings && (
+        <Settings setShowSettings={setShowSettings} userEmail={userEmail} />
+      )}
+      <Nav setShowSettings={setShowSettings} userEmail={userEmail} />
       <div id="map"></div>
       <BottomNav />
     </div>

@@ -1,12 +1,13 @@
 import { Loader } from "@googlemaps/js-api-loader";
 import { useEffect } from "react";
 import profileIcon from "../../assets/Images/Facetune_04-04-2023-11-44-41.jpg";
+import "./Google.scss";
 /* global google */
 
-function Google({ center = { lat: 26.1224, lng: -80.1373 } }) {
+function Google({ center = { lat: 26.1224, lng: -80.1373 }, userEmail }) {
   useEffect(() => {
     const loader = new Loader({
-      apiKey: "",
+      apiKey: process.env.REACT_APP_GOOGLE_API,
       version: "beta",
     });
 

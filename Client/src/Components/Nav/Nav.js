@@ -2,7 +2,7 @@ import Gear from "../../assets/Icons/gear-icon.svg";
 import Chat from "../../assets/Icons/chatbubble-icon.svg";
 import "./Nav.scss";
 
-const Nav = ({ setShowSettings }) => {
+const Nav = ({ setShowSettings, userEmail }) => {
   const handleSettingClick = () => {
     setShowSettings(true);
   };

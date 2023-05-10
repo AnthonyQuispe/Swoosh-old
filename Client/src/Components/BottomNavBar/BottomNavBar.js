@@ -2,21 +2,29 @@ import CheckIn from "../../assets/Icons/Check-in.svg";
 import PeopleIcon from "../../assets/Icons/group.png";
 import ProfileIcon from "../../assets/Icons/Profile.png";
 import LeaderboardIcon from "../../assets/Icons/crown.png";
-import Draggable from "react-draggable";
 
 import "./BottomNavBar.scss";
 
-const BottomNav = () => {
+const BottomNav = (props) => {
   return (
     <nav className="bottomNav-container">
-      <button className="bottomNav-checkin-button">
+      {/* <button className="bottomNav-checkin-button ">
+        <img
+          src={CheckIn}
+          alt="Star Game Button"
+          className="bottomNav-checkin-button-img"
+          onClick={props.onStartGame}
+        />
+        <p>Start Game</p>
+      </button> */}
+      {/* <button className="bottomNav-checkin-button">
         <img
           src={CheckIn}
           alt="Check In Button"
           className="bottomNav-checkin-button-img"
         />
         <p>Check In</p>
-      </button>
+      </button> */}
       <div className="bottomNav-container--details">
         <button className="bottomNav-container--details-extender"></button>
         <div className="bottomNav-container--details-buttons">

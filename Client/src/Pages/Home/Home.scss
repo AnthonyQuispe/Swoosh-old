@@ -55,6 +55,14 @@
     left: 50%;
     transform: translateX(-50%);
 
+    &--forgot {
+      color: $Orange;
+      font-weight: 600;
+      &Link {
+        text-decoration: none;
+      }
+    }
+
     &-button {
       background-color: $Orange;
       width: 75vw;

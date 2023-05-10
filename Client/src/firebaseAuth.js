@@ -15,8 +15,6 @@ export const createUser = async (firstName, lastName, email, password) => {
     console.log("User created successfully");
 
     const usersRef = collection(db, "users");
-    console.log("db", db); // log db to the console
-    console.log("usersRef", usersRef); // log usersRef to the console
 
     // Store user profile in Firestore
     await setDoc(

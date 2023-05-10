@@ -1,5 +1,6 @@
 import "./Home.scss";
 import Highlights1 from "../../assets/Media/SwooshIOS.mp4";
+// import Logo from "../../assets/Icons/Firebase.png";
 import { Link } from "react-router-dom";
 
 const Home = () => {
@@ -10,6 +11,7 @@ const Home = () => {
           <source src={Highlights1} type="video/mp4" />
         </video>
       </div>
+      {/* <img className="home__logo" src={Logo} alt="Swoosh Logo" /> */}
       <h1 className="home__header">Swoosh</h1>
       <div className="home__bottom">
         <Link to={`/signup`}>

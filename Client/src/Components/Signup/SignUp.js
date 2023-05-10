@@ -1,11 +1,13 @@
 import "./SignUp.scss";
 import backArrow from "../../assets/Icons/previous.png";
+import GoogleIcon from "../../assets/Icons/google.png";
 import { Link } from "react-router-dom";
 import { createUser } from "../../firebaseAuth";
 import { useNavigate } from "react-router";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "../../firebase-config";
 
 const SignUp = () => {
-  // const [RouteSign, setRouteSign] = useState(false);
   let navigate = useNavigate();
   //Validates form before passing it to Firebase Autentication
   const handleSubmit = async (event) => {
@@ -35,19 +37,36 @@ const SignUp = () => {
       await createUser(firstName, lastName, email, password);
       alert("Account created successfully!");
       // setRouteSign(true);
-      navigate("/");
+      navigate("/dashboard", { state: { userEmail: auth.currentUser.email } });
     } catch (error) {
       alert("Account creation failed please try again");
     }
   };
 
+  //Sign in/up using Google Feature
+  const provider = new GoogleAuthProvider();
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        console.log(result);
+        navigate("/dashboard", {
+          state: { userEmail: auth.currentUser.email },
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <form onSubmit={handleSubmit} className="sign">
-      <Link to={`/`}>
-        <img className="sign__backArrow" src={backArrow} alt="back icon" />
-      </Link>
-      {/* {RouteSign && <Link to="/"></Link>} */}
-      <h1 className="sign__header">Swoosh</h1>
+      <div className="sign__top--containter">
+        <Link to={`/`}>
+          <img className="sign__backArrow" src={backArrow} alt="back icon" />
+        </Link>
+        <h1 className="sign__header">Swoosh</h1>
+      </div>
+
       <h3 className="sign__title">Create your Account </h3>
       <div className="sign__name--container">
         <div className="sign__input--container">
@@ -122,11 +141,19 @@ const SignUp = () => {
         <p className="sign__bottom-textcontainer-text">
           Already have an account?
         </p>
-        <Link to={`/signin`} className="sign__bottom-textcontainer-link">
+        <Link to={`/dashboard`} className="sign__bottom-textcontainer-link">
           {" "}
           <p className="sign__bottom-textcontainer-signin">Sign In</p>
         </Link>
       </div>
+      <button onClick={signInWithGoogle} className="sign__button--google">
+        <img
+          className="sign__button--google-img"
+          src={GoogleIcon}
+          alt="back icon"
+        />
+        <p>Sign up with Google</p>
+      </button>
     </form>
   );
 };

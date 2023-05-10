@@ -7,7 +7,7 @@ import Location from "../../assets/Icons/location.png";
 import Blocked from "../../assets/Icons/block.png";
 import Notification from "../../assets/Icons/notification.png";
 import Account from "../../assets/Icons/user.png";
-import { getAuth, signOut } from "firebase/auth";
+import { signOut } from "firebase/auth";
 import { auth } from "../../firebase-config";
 import { useNavigate } from "react-router";
 

@@ -2,7 +2,6 @@ import "./SignUp.scss";
 import backArrow from "../../assets/Icons/previous.png";
 import { Link } from "react-router-dom";
 import { createUser } from "../../firebaseAuth";
-import { useState } from "react";
 import { useNavigate } from "react-router";
 
 const SignUp = () => {

@@ -5,7 +5,7 @@ import CheckIn from "../../assets/Icons/Check-in.svg";
 import "./Google.scss";
 /* global google */
 
-function Google({ center = { lat: 26.1224, lng: -80.1373 } }) {
+function Google() {
   const [startGame, setStartGame] = useState(false);
 
   useEffect(() => {
@@ -38,7 +38,16 @@ function Google({ center = { lat: 26.1224, lng: -80.1373 } }) {
               icon: profileMarker,
               animation: google.maps.Animation.DROP,
             });
+
+            // add click event listener to the marker
+            marker.addListener("click", () => {
+              const position = marker.getPosition();
+              console.log(
+                `Marker clicked at ${position.lat()}, ${position.lng()}`
+              );
+            });
           }
+
           const testMarker = new google.maps.Marker({
             position: { lat: 26.035148859786357, lng: -80.27636072861866 },
             map: map,
@@ -48,7 +57,7 @@ function Google({ center = { lat: 26.1224, lng: -80.1373 } }) {
         });
       }
     });
-  });
+  }, [startGame]);
 
   return (
     <div>

@@ -11,8 +11,6 @@ function Dashboard() {
   const location = useLocation();
   const userEmail = location.state.userEmail;
 
-  console.log("userEmail in Dashboard:", userEmail);
-
   return (
     <div className="dashboard__container">
       <GoogleMaps userEmail={userEmail} />

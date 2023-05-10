@@ -4,3 +4,30 @@ img[src*="Facetune"] {
   height: 100px;
   width: 100px;
 }
+
+.google__button {
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 30px;
+  border: none;
+  background-color: white;
+  color: #00c0fe;
+  margin: 20px auto;
+  position: absolute;
+  z-index: 3;
+  bottom: 17vw;
+  left: 0;
+  right: 0;
+}
+
+.google__button--image {
+  height: 30px;
+  width: 30spx;
+}
+
+.google__button--text {
+  font-size: 1rem;
+}

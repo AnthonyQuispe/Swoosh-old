@@ -1,16 +1,18 @@
 import { Loader } from "@googlemaps/js-api-loader";
 import { useEffect, useState } from "react";
-import profileIcon from "../../assets/Images/Facetune_04-04-2023-11-44-41.jpg";
+import profileIcon from "../../assets/Icons/Profile.png";
 import CheckIn from "../../assets/Icons/Check-in.svg";
 import "./Google.scss";
-import { collection, query, where, getDocs } from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../firebase-config";
 
 /* global google */
 
-function Google({ userEmail }) {
+function Google({ selection, photoURL }) {
   const [startGame, setStartGame] = useState(false);
-  const [userPhotoURL, setUserPhotoURL] = useState("");
+  const [userPhotoURL, setUserPhotoURL] = useState(photoURL);
+
+  console.log("Checking selection:", selection);
 
   useEffect(() => {
     const loader = new Loader({
@@ -20,7 +22,7 @@ function Google({ userEmail }) {
 
     loader.load().then(() => {
       if ("geolocation" in navigator) {
-        navigator.geolocation.getCurrentPosition((position) => {
+        navigator.geolocation.getCurrentPosition(async (position) => {
           const { latitude, longitude } = position.coords;
           const map = new google.maps.Map(document.getElementById("map"), {
             center: { lat: latitude, lng: longitude },
@@ -63,24 +65,18 @@ function Google({ userEmail }) {
     });
   }, [startGame, userPhotoURL]);
 
-  useEffect(() => {
-    const fetchUserPhotoURL = async () => {
-      const usersRef = collection(db, "users");
-      const userQuery = query(usersRef, where("email", "==", userEmail));
-      const userDocs = await getDocs(userQuery);
-      if (userDocs.size > 0) {
-        const userData = userDocs.docs[0].data();
-        setUserPhotoURL(userData.photoURL);
-      }
-    };
-    if (userEmail) {
-      fetchUserPhotoURL();
-    }
-  }, [userEmail]);
-
   return (
     <div>
-      <button className="google__button" onClick={() => setStartGame(true)}>
+      <button
+        className="google__button"
+        onClick={() => {
+          if (selection) {
+            setStartGame(true);
+          } else {
+            alert("Please select an option before starting the game.");
+          }
+        }}
+      >
         <img
           src={CheckIn}
           alt="Star Game Button"

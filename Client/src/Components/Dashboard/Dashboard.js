@@ -8,16 +8,26 @@ import "./Dashboard.scss";
 
 function Dashboard() {
   const [showSettings, setShowSettings] = useState(false);
+  const [selection, setSelection] = useState("");
   const location = useLocation();
   const userEmail = location.state.userEmail;
+  const photoURL = location.state.photoURL;
 
   return (
     <div className="dashboard__container">
-      <GoogleMaps userEmail={userEmail} />
+      <GoogleMaps
+        userEmail={userEmail}
+        selection={selection}
+        photoURL={photoURL}
+      />
       {showSettings && (
         <Settings setShowSettings={setShowSettings} userEmail={userEmail} />
       )}
-      <Nav setShowSettings={setShowSettings} userEmail={userEmail} />
+      <Nav
+        setShowSettings={setShowSettings}
+        userEmail={userEmail}
+        setSelection={setSelection}
+      />
       <div id="map"></div>
       <BottomNav />
     </div>

@@ -2,9 +2,12 @@ import Gear from "../../assets/Icons/gear-icon.svg";
 import Chat from "../../assets/Icons/chatbubble-icon.svg";
 import "./Nav.scss";
 
-const Nav = ({ setShowSettings, userEmail }) => {
+const Nav = ({ setShowSettings, userEmail, setSelection }) => {
   const handleSettingClick = () => {
     setShowSettings(true);
+  };
+  const handleSelectionChange = (e) => {
+    setSelection(e.target.value);
   };
 
   return (
@@ -13,7 +16,10 @@ const Nav = ({ setShowSettings, userEmail }) => {
         <img className="nav-button__icon" src={Chat} alt="chat" />
       </button>
       <div className="nav-container__filter-dropdown">
-        <select className="nav-dropdown__select">
+        <select
+          className="nav-dropdown__select"
+          onChange={handleSelectionChange}
+        >
           <option value="#"></option>
           <option value="basketball">Basketball</option>
           <option value="futbol">Fútbol</option>

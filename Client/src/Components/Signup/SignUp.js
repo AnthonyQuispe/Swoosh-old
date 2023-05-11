@@ -39,7 +39,9 @@ const SignUp = () => {
       await createUser(firstName, lastName, email, password);
       alert("Account created successfully!");
       // setRouteSign(true);
-      navigate("/dashboard", { state: { userEmail: auth.currentUser.email } });
+      navigate("/dashboard", {
+        state: { displayName: auth.currentUser.displayName },
+      });
     } catch (error) {
       alert("Account creation failed please try again");
     }
@@ -63,7 +65,11 @@ const SignUp = () => {
         await setDoc(userRef, userData, { merge: true });
 
         navigate("/dashboard", {
-          state: { userEmail: auth.currentUser.email },
+          state: {
+            userEmail: auth.currentUser.email,
+            photoURL: user.photoURL,
+            displayName: user.displayName,
+          },
         });
       })
       .catch((error) => {

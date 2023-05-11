@@ -1,12 +1,15 @@
 import "./SignIn.scss";
 import backArrow from "../../assets/Icons/previous.png";
-import { Link } from "react-router-dom";
-import { useState } from "react";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { auth } from "../../firebase-config";
 import GoogleIcon from "../../assets/Icons/google.png";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  getAuth,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../../firebase-config";
 
 const SignIn = () => {
   const navigate = useNavigate();

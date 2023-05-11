@@ -3,10 +3,14 @@ import { useEffect, useState } from "react";
 import profileIcon from "../../assets/Images/Facetune_04-04-2023-11-44-41.jpg";
 import CheckIn from "../../assets/Icons/Check-in.svg";
 import "./Google.scss";
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { db } from "../../firebase-config";
+
 /* global google */
 
-function Google() {
+function Google({ userEmail }) {
   const [startGame, setStartGame] = useState(false);
+  const [userPhotoURL, setUserPhotoURL] = useState("");
 
   useEffect(() => {
     const loader = new Loader({
@@ -25,7 +29,7 @@ function Google() {
           });
 
           const profileMarker = {
-            url: profileIcon,
+            url: userPhotoURL || profileIcon,
             scaledSize: new google.maps.Size(40, 40),
             className: "profile-marker",
           };
@@ -57,7 +61,22 @@ function Google() {
         });
       }
     });
-  }, [startGame]);
+  }, [startGame, userPhotoURL]);
+
+  useEffect(() => {
+    const fetchUserPhotoURL = async () => {
+      const usersRef = collection(db, "users");
+      const userQuery = query(usersRef, where("email", "==", userEmail));
+      const userDocs = await getDocs(userQuery);
+      if (userDocs.size > 0) {
+        const userData = userDocs.docs[0].data();
+        setUserPhotoURL(userData.photoURL);
+      }
+    };
+    if (userEmail) {
+      fetchUserPhotoURL();
+    }
+  }, [userEmail]);
 
   return (
     <div>

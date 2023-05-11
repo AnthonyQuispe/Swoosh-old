@@ -5,10 +5,12 @@ import { Link } from "react-router-dom";
 import { createUser } from "../../firebaseAuth";
 import { useNavigate } from "react-router";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { auth } from "../../firebase-config";
+import { auth, db } from "../../firebase-config";
+import { doc, setDoc } from "firebase/firestore";
 
 const SignUp = () => {
   let navigate = useNavigate();
+  const provider = new GoogleAuthProvider();
   //Validates form before passing it to Firebase Autentication
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -44,11 +46,22 @@ const SignUp = () => {
   };
 
   //Sign in/up using Google Feature
-  const provider = new GoogleAuthProvider();
+
   const signInWithGoogle = () => {
     signInWithPopup(auth, provider)
-      .then((result) => {
-        console.log(result);
+      .then(async (result) => {
+        const user = result.user;
+        const userRef = doc(db, "users", user.uid);
+
+        const userData = {
+          displayName: user.displayName,
+          email: user.email,
+          photoURL: user.photoURL,
+        };
+
+        // Use setDoc to update the user document with the userData object
+        await setDoc(userRef, userData, { merge: true });
+
         navigate("/dashboard", {
           state: { userEmail: auth.currentUser.email },
         });

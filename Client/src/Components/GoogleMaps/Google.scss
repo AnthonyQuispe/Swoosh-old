@@ -1,4 +1,5 @@
-img[src*="Facetune"] {
+img[src*="https://lh3.googleusercontent.com/"]
+{
   border: 2px solid red;
   border-radius: 50%;
   height: 100px;
@@ -21,13 +22,13 @@ img[src*="Facetune"] {
   bottom: 17vw;
   left: 0;
   right: 0;
-}
 
-.google__button--image {
-  height: 30px;
-  width: 30spx;
-}
+  &--image {
+    height: 30px;
+    width: 30spx;
+  }
 
-.google__button--text {
-  font-size: 1rem;
+  &--text {
+    font-size: 1rem;
+  }
 }

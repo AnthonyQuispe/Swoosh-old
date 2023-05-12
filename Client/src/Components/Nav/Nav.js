@@ -21,8 +21,8 @@ const Nav = ({ setShowSettings, userEmail, setSelection }) => {
           onChange={handleSelectionChange}
         >
           <option value="#"></option>
-          <option value="basketball">Basketball</option>
-          <option value="futbol">Fútbol</option>
+          <option value="Basketball">Basketball</option>
+          <option value="Futbol">Fútbol</option>
         </select>
       </div>
       <button

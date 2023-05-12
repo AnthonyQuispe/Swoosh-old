@@ -4,13 +4,19 @@ import GoogleIcon from "../../assets/Icons/google.png";
 import { Link } from "react-router-dom";
 import { createUser } from "../../firebaseAuth";
 import { useNavigate } from "react-router";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  setPersistence,
+  browserSessionPersistence,
+} from "firebase/auth";
 import { auth, db } from "../../firebase-config";
 import { doc, setDoc } from "firebase/firestore";
 
 const SignUp = () => {
   let navigate = useNavigate();
   const provider = new GoogleAuthProvider();
+
   //Validates form before passing it to Firebase Autentication
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -19,6 +25,7 @@ const SignUp = () => {
     const email = event.target.email.value;
     const password = event.target.password.value;
     const confirmPassword = event.target.confirmPassword.value;
+    const username = event.target.username.value;
 
     //Front-End Validation
     if (!firstName || !lastName) {
@@ -36,7 +43,7 @@ const SignUp = () => {
     }
     //Firebase Autentication
     try {
-      await createUser(firstName, lastName, email, password);
+      await createUser(firstName, lastName, email, password, username);
       alert("Account created successfully!");
       // setRouteSign(true);
       navigate("/dashboard", {
@@ -50,6 +57,7 @@ const SignUp = () => {
   //Sign in/up using Google Feature
 
   const signInWithGoogle = () => {
+    setPersistence(auth, browserSessionPersistence);
     signInWithPopup(auth, provider)
       .then(async (result) => {
         const user = result.user;
@@ -109,7 +117,16 @@ const SignUp = () => {
           />
         </div>
       </div>
-
+      <div className="sign__container">
+        <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Username"
+          required
+          className="sign__container--input"
+        />
+      </div>
       <div className="sign__container">
         <input
           type="email"
@@ -128,6 +145,7 @@ const SignUp = () => {
           placeholder="Password"
           required
           className="sign__container--input"
+          minLength={6}
         />
       </div>
       <div className="sign__container">
@@ -157,12 +175,12 @@ const SignUp = () => {
       <button className="sign__button">Continue</button>
 
       <div className="sign__bottom-textcontainer">
-        <p className="sign__bottom-textcontainer-text">
+        <p className="sign__bottom-textcontainer--text">
           Already have an account?
         </p>
-        <Link to={`/dashboard`} className="sign__bottom-textcontainer-link">
+        <Link to={`/dashboard`} className="sign__bottom-textcontainer--link">
           {" "}
-          <p className="sign__bottom-textcontainer-signin">Sign In</p>
+          <p className="sign__bottom-textcontainer--signin">Sign In</p>
         </Link>
       </div>
       <button onClick={signInWithGoogle} className="sign__button--google">

@@ -3,14 +3,15 @@ import { useEffect, useState } from "react";
 import profileIcon from "../../assets/Icons/Profile.png";
 import CheckIn from "../../assets/Icons/Check-in.svg";
 import "./Google.scss";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase-config";
+import { getCollection } from "../../firebaseAuth";
 
 /* global google */
 
 function Google({ selection, photoURL }) {
   const [startGame, setStartGame] = useState(false);
-  const [userPhotoURL, setUserPhotoURL] = useState(photoURL);
+  const [userPhotoURL] = useState(photoURL);
 
   console.log("Checking selection:", selection);
 
@@ -45,25 +46,45 @@ function Google({ selection, photoURL }) {
               animation: google.maps.Animation.DROP,
             });
 
+            const inputContainer = document.createElement("div");
+            inputContainer.classList.add("google__info-window");
+            const input1 = document.createElement("input");
+            input1.type = "text";
+            input1.value = "How Many Players Needed";
+            input1.classList.add("google__info-window--players");
+
+            const input2 = document.createElement("input");
+            input2.type = "text";
+            input2.value = "Email";
+            input2.classList.add("google__info-window--players");
+
+            inputContainer.appendChild(input1);
+            inputContainer.appendChild(input2);
+
+            // add info window to the marker
+            const InfoWindow = new google.maps.InfoWindow({
+              content: inputContainer,
+            });
+
             // add click event listener to the marker
             marker.addListener("click", () => {
               const position = marker.getPosition();
               console.log(
                 `Marker clicked at ${position.lat()}, ${position.lng()}`
               );
+              InfoWindow.open(map, marker);
             });
           }
-
-          const testMarker = new google.maps.Marker({
-            position: { lat: 26.035148859786357, lng: -80.27636072861866 },
-            map: map,
-            icon: profileMarker,
-            animation: google.maps.Animation.DROP,
-          });
+        });
+      }
+      // Call getBasketballCollection function here after the Google Maps API has finished loading
+      if (selection) {
+        getCollection(selection).then((collectionData) => {
+          console.log(collectionData);
         });
       }
     });
-  }, [startGame, userPhotoURL]);
+  }, [startGame, userPhotoURL, selection]);
 
   return (
     <div>

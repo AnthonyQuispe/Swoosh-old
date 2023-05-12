@@ -10,8 +10,10 @@
 }
 
 .sign__title {
-  margin: 2rem 0;
+  margin: 1.5rem 0;
   color: white;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 .sign__container {
   margin: 1rem 0;
@@ -268,15 +270,17 @@
   justify-content: center;
   margin: 1rem 0 1rem 0;
 
-  &-text {
+  &--text {
     margin: 0 8px 0 0;
     color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+      1px 1px 0 #000;
   }
 
-  &-signin {
+  &--signin {
     color: $Orange;
   }
-  &-link {
+  &--link {
     text-decoration: none;
   }
 }

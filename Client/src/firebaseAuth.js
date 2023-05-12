@@ -1,9 +1,20 @@
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  updateProfile,
+  setPersistence,
+  browserSessionPersistence,
+} from "firebase/auth";
 import { auth, db } from "./firebase-config";
-import { doc, setDoc, collection } from "firebase/firestore";
+import { doc, setDoc, collection, getDocs } from "firebase/firestore";
 
 // created an export function to be called to create users profile
-export const createUser = async (firstName, lastName, email, password) => {
+export const createUser = async (
+  firstName,
+  lastName,
+  email,
+  password,
+  username
+) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(
       auth,
@@ -23,11 +34,36 @@ export const createUser = async (firstName, lastName, email, password) => {
         displayName: user.displayName,
         email: user.email,
         photoURL: user.photoURL,
+        username: username,
       },
       { merge: true }
     );
+    //Set browserSessionPersistence
+    setPersistence(auth, browserSessionPersistence);
   } catch (error) {
     console.error("Error creating user:", error.message);
     throw error;
   }
+};
+
+// //Get sports collection for select sport
+// export const getBasketballCollection = async () => {
+//   const basketballCollectionRef = collection(db, "Basketball");
+//   const querySnapshot = await getDocs(basketballCollectionRef);
+//   const basketballCollectionData = [];
+//   querySnapshot.forEach((doc) => {
+//     basketballCollectionData.push(doc.data());
+//   });
+//   return basketballCollectionData;
+// };
+
+//Get sports collection for select sport
+export const getCollection = async (sport) => {
+  const collectionRef = collection(db, sport);
+  const querySnapshot = await getDocs(collectionRef);
+  const collectionData = [];
+  querySnapshot.forEach((doc) => {
+    collectionData.push(doc.data());
+  });
+  return collectionData;
 };

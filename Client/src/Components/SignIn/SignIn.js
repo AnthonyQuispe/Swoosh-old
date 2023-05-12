@@ -8,14 +8,18 @@ import {
   signInWithPopup,
   getAuth,
   signInWithEmailAndPassword,
+  setPersistence,
+  browserSessionPersistence,
 } from "firebase/auth";
-import { auth } from "../../firebase-config";
+import { auth, db } from "../../firebase-config";
+import { doc, setDoc } from "firebase/firestore";
 
 const SignIn = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userEmail, setUserEmail] = useState("");
+  const provider = new GoogleAuthProvider();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -32,13 +36,27 @@ const SignIn = () => {
   };
 
   //Sign in/up using Google Feature
-  const provider = new GoogleAuthProvider();
   const signInWithGoogle = () => {
+    setPersistence(auth, browserSessionPersistence);
     signInWithPopup(auth, provider)
-      .then((result) => {
-        console.log(result);
+      .then(async (result) => {
+        const user = result.user;
+        const userRef = doc(db, "users", user.uid);
+
+        const userData = {
+          email: user.email,
+          photoURL: user.photoURL,
+        };
+
+        // Use setDoc to update the user document with the userData object
+        await setDoc(userRef, userData, { merge: true });
+
         navigate("/dashboard", {
-          state: { userEmail: auth.currentUser.email },
+          state: {
+            userEmail: auth.currentUser.email,
+            photoURL: user.photoURL,
+            displayName: user.displayName,
+          },
         });
       })
       .catch((error) => {

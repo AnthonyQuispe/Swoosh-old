@@ -13,8 +13,6 @@ function Google({ selection, photoURL }) {
   const [startGame, setStartGame] = useState(false);
   const [userPhotoURL] = useState(photoURL);
 
-  console.log("Checking selection:", selection);
-
   useEffect(() => {
     const loader = new Loader({
       apiKey: process.env.REACT_APP_GOOGLE_API,
@@ -31,13 +29,41 @@ function Google({ selection, photoURL }) {
             disableDefaultUI: true,
           });
 
+          //Checking Selection before displaying markers for that sport collection
+          if (selection) {
+            getCollection(selection).then((collectionData) => {
+              const usersPhotoURL = collectionData[0].PhotoURL;
+              const everyoneMarker = {
+                url: usersPhotoURL || profileIcon,
+                scaledSize: new google.maps.Size(40, 40),
+                className: "profile-marker",
+              };
+
+              const { latitude, longitude } = collectionData[0].marker;
+              const newMarker = new google.maps.Marker({
+                position: { lat: latitude, lng: longitude },
+                map: map,
+                icon: everyoneMarker,
+                animation: google.maps.Animation.DROP,
+              });
+              // add click event listener to the marker
+              newMarker.addListener("click", () => {
+                const position = newMarker.getPosition();
+                console.log(
+                  `Marker clicked at ${position.lat()}, ${position.lng()}`
+                );
+              });
+            });
+          }
+
+          //sets Current User photo profile to Photo URL
           const profileMarker = {
             url: userPhotoURL || profileIcon,
             scaledSize: new google.maps.Size(40, 40),
             className: "profile-marker",
           };
 
-          // create marker at current location and add it to the map
+          // creates a marker for the current user at current location and add it to the map
           if (startGame) {
             const marker = new google.maps.Marker({
               position: { lat: latitude, lng: longitude },
@@ -55,7 +81,7 @@ function Google({ selection, photoURL }) {
 
             const input2 = document.createElement("input");
             input2.type = "text";
-            input2.value = "Email";
+            input2.value = "W";
             input2.classList.add("google__info-window--players");
 
             inputContainer.appendChild(input1);
@@ -75,12 +101,6 @@ function Google({ selection, photoURL }) {
               InfoWindow.open(map, marker);
             });
           }
-        });
-      }
-      // Call getBasketballCollection function here after the Google Maps API has finished loading
-      if (selection) {
-        getCollection(selection).then((collectionData) => {
-          console.log(collectionData);
         });
       }
     });

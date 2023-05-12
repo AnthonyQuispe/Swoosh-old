@@ -1,9 +1,8 @@
 import "./SignUp.scss";
 import backArrow from "../../assets/Icons/previous.png";
 import GoogleIcon from "../../assets/Icons/google.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { createUser } from "../../firebaseAuth";
-import { useNavigate } from "react-router";
 import {
   GoogleAuthProvider,
   signInWithPopup,
@@ -47,7 +46,7 @@ const SignUp = () => {
       alert("Account created successfully!");
       // setRouteSign(true);
       navigate("/dashboard", {
-        state: { displayName: auth.currentUser.displayName },
+        state: { email: auth.currentUser.displayName },
       });
     } catch (error) {
       alert("Account creation failed please try again");
@@ -64,7 +63,6 @@ const SignUp = () => {
         const userRef = doc(db, "users", user.uid);
 
         const userData = {
-          displayName: user.displayName,
           email: user.email,
           photoURL: user.photoURL,
         };

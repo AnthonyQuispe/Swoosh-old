@@ -2,6 +2,7 @@ import "./Home.scss";
 import Highlights1 from "../../assets/Media/SwooshIOS.mp4";
 // import Logo from "../../assets/Icons/Firebase.png";
 import { Link } from "react-router-dom";
+import Logo from "../../assets/Icons/Untitled_Artwork_1_1.svg";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       </div>
       {/* <img className="home__logo" src={Logo} alt="Swoosh Logo" /> */}
       <h1 className="home__header">Swoosh</h1>
+      {/* <img className="home__logo" src={Logo} alt="Logo" /> */}
       <div className="home__bottom">
         <Link to={`/signup`}>
           <button className="home__bottom-button">

@@ -6,20 +6,20 @@ img[src*="https://lh3.googleusercontent.com/"]
   width: 100px;
 }
 
-.google__button {
+.google__create {
   border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 120px;
-  height: 30px;
+  width: 150px;
+  height: 35px;
   border: none;
   background-color: white;
   color: #00c0fe;
   margin: 20px auto;
   position: absolute;
   z-index: 1;
-  bottom: 17vw;
+  bottom: 15vw;
   left: 0;
   right: 0;
 
@@ -31,4 +31,7 @@ img[src*="https://lh3.googleusercontent.com/"]
   &--text {
     font-size: 1rem;
   }
+}
+
+.google__info-form {
 }

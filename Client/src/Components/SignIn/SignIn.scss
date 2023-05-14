@@ -16,6 +16,8 @@
 .signin__title {
   margin: 2rem 0;
   color: white;
+  text-shadow: -3px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 .signin__container {
   margin: 1rem 0;
@@ -37,15 +39,18 @@
 
 .signin__button {
   margin: 7vh 0;
-  border-radius: 20px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 75vw;
   height: 6vh;
   color: white;
-  font-size: 1.25rem;
+  font-size: 2rem;
   background-color: $Orange;
+  box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
+  text-shadow: -3px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 
 .signin__header {
@@ -279,6 +284,7 @@
 
   &-signin {
     color: $Orange;
+    font-weight: 600;
   }
 }
 

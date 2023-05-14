@@ -46,7 +46,10 @@ const SignUp = () => {
       alert("Account created successfully!");
       // setRouteSign(true);
       navigate("/dashboard", {
-        state: { email: auth.currentUser.displayName },
+        state: {
+          email: auth.currentUser.email,
+          displayName: auth.currentUser.displayName,
+        },
       });
     } catch (error) {
       alert("Account creation failed please try again");

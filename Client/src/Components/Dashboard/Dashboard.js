@@ -10,10 +10,11 @@ function Dashboard() {
   const [showSettings, setShowSettings] = useState(false);
   const [selection, setSelection] = useState("");
   const location = useLocation();
-  const userEmail = location.state.userEmail;
-  const photoURL = location.state.photoURL;
+  const userEmail = location.state?.userEmail;
+  const photoURL = location.state?.photoURL;
 
-  console.log(userEmail);
+  console.log(location.state); // check the value of location.state
+  console.log(userEmail); // check the value of userEmail
 
   // const myObj = JSON.parse(
   //   window.sessionStorage.getItem(

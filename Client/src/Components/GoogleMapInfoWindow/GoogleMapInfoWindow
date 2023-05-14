@@ -1,0 +1,43 @@
+import "./GoogleInfoWindow.scss";
+
+const GoogleInfoWindow = () => {
+  return (
+    <form className="google-info">
+      <h3 className="google-info__header">Choose</h3>
+      <div className="google-info__players">
+        <p className="google-info__text">Players</p>
+        <input
+          type="number"
+          name="Players"
+          id="Players"
+          className="google-info__players--input"
+          required
+        />
+        <p className="google-info__text">/ </p>
+        <input
+          type="number"
+          name="Players"
+          id="Players"
+          className="google-info__players--input"
+          required
+        />
+      </div>
+      <div className="google-info__players">
+        <p className="google-info__countdown">Countdown </p>
+        <input
+          type="number"
+          name="Players"
+          id="Players"
+          className="google-info__players--input"
+          required
+        />
+        <p className="google-info__countdown">min</p>
+      </div>
+      <button className="google-info__start" onClick={handleStartGame}>
+        Start Game
+      </button>
+    </form>
+  );
+};
+
+export default GoogleInfoWindow;

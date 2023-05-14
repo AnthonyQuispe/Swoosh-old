@@ -6,12 +6,19 @@ import "./Google.scss";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase-config";
 import { getCollection } from "../../firebaseAuth";
+import GoogleInfoModal from "../GoogleInfoModal/GoogleInfoModal";
 
 /* global google */
 
 function Google({ selection, photoURL }) {
-  const [startGame, setStartGame] = useState(false);
+  const [createGame, setCreateGame] = useState(false);
   const [userPhotoURL] = useState(photoURL);
+  const [startGame, setStartGame] = useState(false);
+
+  const handleStartGame = () => {
+    setStartGame(true);
+    setCreateGame(false);
+  };
 
   useEffect(() => {
     const loader = new Loader({
@@ -72,24 +79,22 @@ function Google({ selection, photoURL }) {
               animation: google.maps.Animation.DROP,
             });
 
-            const inputContainer = document.createElement("div");
-            inputContainer.classList.add("google__info-window");
-            const input1 = document.createElement("input");
-            input1.type = "text";
-            input1.value = "How Many Players Needed";
-            input1.classList.add("google__info-window--players");
+            //Google Info Window
+            const infoWindowUsers = document.createElement("div");
+            infoWindowUsers.classList.add("google__info");
+            const title = document.createElement("h3");
+            title.classList.add("google__info-title");
+            title.innerText = "Game Info";
+            const players = document.createElement("p");
+            players.classList.add("google__info-players");
+            players.innerText = "players {} / {}";
 
-            const input2 = document.createElement("input");
-            input2.type = "text";
-            input2.value = "W";
-            input2.classList.add("google__info-window--players");
-
-            inputContainer.appendChild(input1);
-            inputContainer.appendChild(input2);
+            infoWindowUsers.appendChild(title);
+            infoWindowUsers.appendChild(players);
 
             // add info window to the marker
             const InfoWindow = new google.maps.InfoWindow({
-              content: inputContainer,
+              content: infoWindowUsers,
             });
 
             // add click event listener to the marker
@@ -104,26 +109,28 @@ function Google({ selection, photoURL }) {
         });
       }
     });
-  }, [startGame, userPhotoURL, selection]);
+  }, [setCreateGame, userPhotoURL, selection, startGame]);
 
   return (
-    <div>
+    <div className="google">
+      {createGame && <GoogleInfoModal onStartGame={handleStartGame} />}
       <button
-        className="google__button"
-        onClick={() => {
+        className="google__create"
+        onClick={(event) => {
+          event.preventDefault();
           if (selection) {
-            setStartGame(true);
+            setCreateGame(true);
           } else {
-            alert("Please select an option before starting the game.");
+            alert("Please select an option before creating the game.");
           }
         }}
       >
         <img
           src={CheckIn}
-          alt="Star Game Button"
-          className="google__button--image"
+          alt="Create Game Button"
+          className="google__create--image"
         />
-        <p className="google__button--text">Start Game</p>
+        <p className="google__create--text">Created Game</p>
       </button>
     </div>
   );

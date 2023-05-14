@@ -1,0 +1,57 @@
+@use "../../styles/partials/variables" as *;
+
+.google-info {
+  position: absolute;
+  z-index: 3;
+  background-color: $Baby-blue;
+  height: 22vh;
+  width: 50vw;
+  top: 25%;
+  left: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  border-radius: 10px;
+
+  &__players {
+    display: flex;
+    align-items: center;
+
+    &--input {
+      height: 16px;
+      width: 18px;
+      margin: 0 0.2rem;
+      border: none;
+      border-radius: 4px;
+      text-align: center;
+    }
+  }
+
+  &__start {
+    background-color: #fe3e00;
+    border: none;
+    border-radius: 25px;
+    color: #fff;
+    height: 25px;
+    width: 100px;
+    box-shadow: #121212 0 0 0 1px, transparent 0 0 0 0;
+    font-weight: 600;
+  }
+
+  &__text {
+    color: white;
+    font-weight: 600;
+  }
+  &__countdown {
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  &__header {
+    color: $Orange;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+      1px 1px 0 #000;
+  }
+}

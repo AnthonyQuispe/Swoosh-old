@@ -46,17 +46,6 @@ export const createUser = async (
   }
 };
 
-// //Get sports collection for select sport
-// export const getBasketballCollection = async () => {
-//   const basketballCollectionRef = collection(db, "Basketball");
-//   const querySnapshot = await getDocs(basketballCollectionRef);
-//   const basketballCollectionData = [];
-//   querySnapshot.forEach((doc) => {
-//     basketballCollectionData.push(doc.data());
-//   });
-//   return basketballCollectionData;
-// };
-
 //Get sports collection for select sport
 export const getCollection = async (sport) => {
   const collectionRef = collection(db, sport);

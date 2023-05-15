@@ -18,8 +18,9 @@ const GoogleInfoModal = ({ onStartGame }) => {
           className="google-info__players--input"
           required
           min={1}
+          placeholder="1"
         />
-        <p className="google-info__text">/ </p>
+        <p className="google-info__text">vs </p>
         <input
           type="number"
           name="Players2"
@@ -38,6 +39,16 @@ const GoogleInfoModal = ({ onStartGame }) => {
           required
         />
         <p className="google-info__countdown">min</p>
+      </div>
+      <div className="google-info__skill">
+        <p className="google-info__skill">Skill Level </p>
+        <select className="google-info__select">
+          <option value="">Level</option>
+          <option value="Beginner">Beginner</option>
+          <option value="Intermediate">Intermediate</option>
+          <option value="Advanced">Advanced</option>
+          <option value="Elite">Elite</option>
+        </select>
       </div>
       <button className="google-info__start" onClick={handleStartGame}>
         Start Game

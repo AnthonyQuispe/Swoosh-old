@@ -90,7 +90,7 @@ const SignUp = () => {
     <form onSubmit={handleSubmit} className="sign">
       <div className="sign__top--containter">
         <Link to={`/`}>
-          <img className="sign__backArrow" src={backArrow} alt="back icon" />
+          <img className="sign__back-arrow" src={backArrow} alt="back icon" />
         </Link>
         <h1 className="sign__header">Swoosh</h1>
       </div>
@@ -104,7 +104,7 @@ const SignUp = () => {
             id="firstName"
             placeholder="First Name"
             required
-            className="sign__container--nameInput"
+            className="sign__container--name-input"
           />
         </div>
         <div className="sign__input--container">
@@ -114,7 +114,7 @@ const SignUp = () => {
             id="lastName"
             placeholder="Last Name"
             required
-            className="sign__container--nameInput"
+            className="sign__container--name-input"
           />
         </div>
       </div>

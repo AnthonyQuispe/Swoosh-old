@@ -98,7 +98,7 @@ const SignIn = () => {
         />
       </div>
       <div className="checkbox-wrapper-19">
-        <input type="checkbox" id="checkbox" required name="checkbox" />
+        <input type="checkbox" id="checkbox" name="checkbox" />
         <label htmlFor="checkbox" className="check-box" value />
         <label className="signin__privacy">Remember me </label>
       </div>

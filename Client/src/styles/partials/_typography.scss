@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap");
+
 @font-face {
   font-family: "Basement Grotesque Display";
   src: url("../../assets/Font/grotesque/BasementGrotesqueDisplay-UltraBlackExtraExpanded.woff2")
@@ -15,6 +17,15 @@
       format("woff2"),
     url("https://basement.studio/fonts/basement-grotesque/BasementGrotesque-Black_v1.202.woff")
       format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bakbak One", sans-serif;
+  src: url("https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap")
+    format("woff2");
   font-weight: 900;
   font-style: normal;
   font-display: swap;

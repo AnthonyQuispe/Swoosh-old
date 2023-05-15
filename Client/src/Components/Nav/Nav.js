@@ -19,10 +19,9 @@ const Nav = ({ setShowSettings, userEmail, setSelection }) => {
         <select
           className="nav-dropdown__select"
           onChange={handleSelectionChange}
+          defaultValue=""
         >
-          <option disabled selected value="">
-            Select Sport
-          </option>
+          <option value="">Select Sport</option>
           <option value="Basketball">Basketball</option>
           <option value="Futbol">Fútbol</option>
           <option value="Running">Running</option>

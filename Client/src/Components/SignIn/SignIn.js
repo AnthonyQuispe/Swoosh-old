@@ -1,5 +1,5 @@
 import "./SignIn.scss";
-import backArrow from "../../assets/Icons/previous.png";
+import backArrow from "../../assets/Icons/Left-Arrow.png";
 import GoogleIcon from "../../assets/Icons/google.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -67,7 +67,13 @@ const SignIn = () => {
   return (
     <form onSubmit={handleSubmit} className="signin">
       <Link to={`/`}>
-        <img className="signin__backArrow" src={backArrow} alt="back icon" />
+        <button className="signin__back-button">
+          <img
+            className="signin__back-button--arrow"
+            src={backArrow}
+            alt="back icon"
+          />
+        </button>
       </Link>
       <h1 className="signin__header">Swoosh</h1>
       <h3 className="signin__title">Log In </h3>
@@ -102,16 +108,14 @@ const SignIn = () => {
         <label htmlFor="checkbox" className="check-box" value />
         <label className="signin__privacy">Remember me </label>
       </div>
-      <button className="signin__button">Continue</button>
-
+      <button className="signin__bottom--button">CONTINUE</button>
       <div className="signin__bottom-textcontainer">
         <p className="signin__bottom-textcontainer-text">
-          Don't have an account?
+          Don't have an account?{" "}
+          <Link to={`/signup`} className="signin__bottom-textcontainer-link">
+            Sign Up
+          </Link>
         </p>
-        <Link to={`/signup`} className="signin__bottom-textcontainer-link">
-          {" "}
-          <p className="signin__bottom-textcontainer-signin">Sign Up</p>
-        </Link>
       </div>
       <Link className="signin__bottom--forgotLink">
         <p className="signin__bottom--forgot">Forgot Password?</p>

@@ -7,6 +7,7 @@ import Location from "../../assets/Icons/location.png";
 import Blocked from "../../assets/Icons/block.png";
 import Notification from "../../assets/Icons/notification.png";
 import Account from "../../assets/Icons/user.png";
+import Email from "../../assets/Icons/email.png";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase-config";
 import { useNavigate } from "react-router";
@@ -66,6 +67,18 @@ const Settings = ({ setShowSettings }) => {
         </button>
         <p className="settings__header">Settings</p>
       </div>
+      <Link to={"/contact"}>
+        <button className="settings__item">
+          <img
+            className="settings__item-img"
+            src={Email}
+            alt="Contact Button"
+          />
+          <p className="settings__item-text settings__item-text--about">
+            Reach Out To Developer
+          </p>
+        </button>
+      </Link>
       <Link to={"/account"}>
         <button className="settings__item">
           <img

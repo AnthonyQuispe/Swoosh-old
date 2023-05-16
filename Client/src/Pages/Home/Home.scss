@@ -30,14 +30,14 @@
     position: absolute;
     width: 297px;
     height: 67px;
-    bottom: 15%;
+    bottom: 7%;
     background: #ffffff;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
     border: 3px solid;
-    border-image-slice: 1;
     transform: translate(-50%, -50%);
     border-image-source: linear-gradient(to bottom, #00b2ff, #ff7a00);
+    border-image-slice: 1;
   }
 
   &__bottom-text {
@@ -55,7 +55,8 @@
   &__bottom-textcontainer {
     box-sizing: border-box;
     width: 100vw;
-    height: 12%;
+    height: 8vh;
+    min-height: 70px;
     left: 0px;
     bottom: 0%;
     background: rgba(255, 255, 255, 0.75);
@@ -76,8 +77,10 @@
       line-height: 28px;
       text-align: center;
       color: #ffffff;
+      height: 100%;
       text-shadow: -2px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
         1px 1px 0 #000;
+      padding: 1rem;
     }
 
     &--link {

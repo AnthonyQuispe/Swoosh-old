@@ -1,5 +1,5 @@
 import "./SignUp.scss";
-import backArrow from "../../assets/Icons/previous.png";
+import backArrow from "../../assets/Icons/Left-Arrow.png";
 import GoogleIcon from "../../assets/Icons/google.png";
 import { Link, useNavigate } from "react-router-dom";
 import { createUser } from "../../firebaseAuth";
@@ -90,7 +90,9 @@ const SignUp = () => {
     <form onSubmit={handleSubmit} className="sign">
       <div className="sign__top--containter">
         <Link to={`/`}>
-          <img className="sign__back-arrow" src={backArrow} alt="back icon" />
+          <button className="sign__back-arrow--button">
+            <img className="sign__back-arrow" src={backArrow} alt="back icon" />
+          </button>
         </Link>
         <h1 className="sign__header">Swoosh</h1>
       </div>
@@ -159,30 +161,29 @@ const SignUp = () => {
           className="sign__container--input"
         />
       </div>
-      <div className="checkbox-wrapper-19">
+      <div className="checkbox-wrapper-20">
         <input type="checkbox" id="checkbox" required name="checkbox" />
         <label htmlFor="checkbox" className="check-box" value />
         <label className="sign__privacy">
-          I Agree with{" "}
+          I agree with
           <Link to="/privacy" className="privacy">
             privacy
-          </Link>{" "}
-          and{" "}
+          </Link>
+          and
           <Link to="/policy" className="policy">
             policy
           </Link>
         </label>
       </div>
-      <button className="sign__button">Continue</button>
 
+      <button className="sign__button">CONTINUE</button>
       <div className="sign__bottom-textcontainer">
         <p className="sign__bottom-textcontainer--text">
           Already have an account?
+          <Link to={`/signin`} className="sign__bottom-textcontainer--link">
+            Sign In
+          </Link>
         </p>
-        <Link to={`/dashboard`} className="sign__bottom-textcontainer--link">
-          {" "}
-          <p className="sign__bottom-textcontainer--signin">Sign In</p>
-        </Link>
       </div>
       <button onClick={signInWithGoogle} className="sign__button--google">
         <img

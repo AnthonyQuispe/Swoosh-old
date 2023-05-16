@@ -125,11 +125,6 @@ function Google({ selection, photoURL }) {
           }
         }}
       >
-        <img
-          src={CheckIn}
-          alt="Create Game Button"
-          className="google__create--image"
-        />
         <p className="google__create--text">Created Game</p>
       </button>
     </div>

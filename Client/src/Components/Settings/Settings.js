@@ -75,7 +75,7 @@ const Settings = ({ setShowSettings }) => {
             alt="Contact Button"
           />
           <p className="settings__item-text settings__item-text--about">
-            Reach Out To Developer
+            Contact Us
           </p>
         </button>
       </Link>

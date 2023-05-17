@@ -1,10 +1,9 @@
 import { Loader } from "@googlemaps/js-api-loader";
 import { useEffect, useState } from "react";
 import profileIcon from "../../assets/Icons/Profile.png";
-import CheckIn from "../../assets/Icons/Check-in.svg";
 import "./Google.scss";
-import { addDoc, collection, getDocs } from "firebase/firestore";
-import { db } from "../../firebase-config";
+import { addDoc, collection, doc, setDoc } from "firebase/firestore";
+import { db, auth } from "../../firebase-config";
 import { getCollection } from "../../firebaseAuth";
 import GoogleInfoModal from "../GoogleInfoModal/GoogleInfoModal";
 
@@ -105,6 +104,21 @@ function Google({ selection, photoURL }) {
               );
               InfoWindow.open(map, marker);
             });
+
+            // Save the marker coordinates and PhotoURL to Firestore
+
+            const user = auth.currentUser;
+            const uid = user.uid;
+
+            const data = {
+              PhotoURL: userPhotoURL,
+              marker: {
+                latitude: marker.getPosition().lat(),
+                longitude: marker.getPosition().lng(),
+              },
+            };
+
+            await setDoc(doc(db, selection, uid), data);
           }
         });
       }
@@ -125,7 +139,7 @@ function Google({ selection, photoURL }) {
           }
         }}
       >
-        <p className="google__create--text">Created Game</p>
+        <p className="google__create--text">Create Game</p>
       </button>
     </div>
   );

@@ -7,6 +7,7 @@ import Forward from "../../assets/Icons/play 1.png";
 import Backwards from "../../assets/Icons/play 2 (1).png";
 import { useState } from "react";
 import "./Nav.scss";
+import { Link } from "react-router-dom";
 
 const Nav = ({ setShowSettings, userEmail, setSelection }) => {
   const [selectedSportIndex, setSelectedSportIndex] = useState(0);
@@ -45,9 +46,12 @@ const Nav = ({ setShowSettings, userEmail, setSelection }) => {
 
   return (
     <nav className="nav-container">
-      <button className="nav-container__button">
-        <img className="nav-button__icon" src={Chat} alt="chat" />
-      </button>
+      <Link to={"/chat"}>
+        {" "}
+        <button className="nav-container__button">
+          <img className="nav-button__icon" src={Chat} alt="chat" />
+        </button>
+      </Link>
 
       <div className="nav-container__carousel">
         <button

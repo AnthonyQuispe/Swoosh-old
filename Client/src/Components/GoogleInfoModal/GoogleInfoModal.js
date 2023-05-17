@@ -10,7 +10,7 @@ const GoogleInfoModal = ({ onStartGame }) => {
     <form className="google-info">
       <h3 className="google-info__header">Choose</h3>
       <div className="google-info__players">
-        <p className="google-info__text">Players</p>
+        <p className="google-info__text">Players :</p>
         <input
           type="number"
           name="Players1"
@@ -20,7 +20,7 @@ const GoogleInfoModal = ({ onStartGame }) => {
           min={1}
           placeholder="1"
         />
-        <p className="google-info__text">vs </p>
+        <p className="google-info__text">/</p>
         <input
           type="number"
           name="Players2"
@@ -30,7 +30,7 @@ const GoogleInfoModal = ({ onStartGame }) => {
         />
       </div>
       <div className="google-info__players">
-        <p className="google-info__countdown">Countdown </p>
+        <p className="google-info__countdown">Wait Time:</p>
         <input
           type="number"
           name="Players"
@@ -40,10 +40,10 @@ const GoogleInfoModal = ({ onStartGame }) => {
         />
         <p className="google-info__countdown">min</p>
       </div>
-      <div className="google-info__skill">
-        <p className="google-info__skill">Skill Level </p>
-        <select className="google-info__select">
-          <option value="">Level</option>
+      <div className="google-info__players">
+        <p className="google-info__level">Level </p>
+        <select>
+          <option value=""></option>
           <option value="Beginner">Beginner</option>
           <option value="Intermediate">Intermediate</option>
           <option value="Advanced">Advanced</option>

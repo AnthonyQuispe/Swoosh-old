@@ -1,5 +1,5 @@
 import PeopleIcon from "../../assets/Icons/group.png";
-import ProfileIcon from "../../assets/Icons/user.png";
+import ProfileIcon from "../../assets/Icons/user2.png";
 import LeaderboardIcon from "../../assets/Icons/crown.png";
 
 import "./BottomNavBar.scss";

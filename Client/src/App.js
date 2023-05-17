@@ -6,6 +6,7 @@ import SignUp from "./Components/Signup/SignUp";
 import AboutPolicy from "./Pages/About/About";
 import AccountCenter from "./Pages/AccountCenter/AccountCenter";
 import ContactDeveloper from "./Pages/Contact/Contact";
+import Chat from "./Pages/Chat/Chat";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path="/about" element={<AboutPolicy />} />
       <Route path="/account" element={<AccountCenter />} />
       <Route path="/contact" element={<ContactDeveloper />} />
+      <Route path="/chat" element={<Chat />} />
     </Routes>
   );
 }

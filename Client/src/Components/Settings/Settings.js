@@ -102,7 +102,7 @@ const Settings = ({ setShowSettings }) => {
           Smart Notification
         </p>
       </button>
-      <button className="settings__item">
+      <button className="settings__item" onClick={handlePaymentClick}>
         <img
           className="settings__item-img"
           src={Blocked}

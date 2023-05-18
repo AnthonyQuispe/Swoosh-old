@@ -3,7 +3,13 @@
 
 img[src*="https://lh3.googleusercontent.com/"]
 {
-  border: 2px solid red;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+}
+
+img[src*="https://ca.slack-edge.com/"]
+{
   border-radius: 50%;
   height: 100px;
   width: 100px;

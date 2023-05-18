@@ -38,27 +38,29 @@ function Google({ selection, photoURL }) {
           //Checking Selection before displaying markers for that sport collection
           if (selection) {
             getCollection(selection).then((collectionData) => {
-              const usersPhotoURL = collectionData[0].PhotoURL;
-              const everyoneMarker = {
-                url: usersPhotoURL || profileIcon,
-                scaledSize: new google.maps.Size(40, 40),
-                className: "profile-marker",
-              };
+              for (const user of collectionData) {
+                const usersPhotoURL = user.PhotoURL;
+                const everyoneMarker = {
+                  url: usersPhotoURL || profileIcon,
+                  scaledSize: new google.maps.Size(40, 40),
+                  className: "profile-marker",
+                };
 
-              const { latitude, longitude } = collectionData[0].marker;
-              const newMarker = new google.maps.Marker({
-                position: { lat: latitude, lng: longitude },
-                map: map,
-                icon: everyoneMarker,
-                animation: google.maps.Animation.DROP,
-              });
-              // add click event listener to the marker
-              newMarker.addListener("click", () => {
-                const position = newMarker.getPosition();
-                console.log(
-                  `Marker clicked at ${position.lat()}, ${position.lng()}`
-                );
-              });
+                const { latitude, longitude } = user.marker;
+                const newMarker = new google.maps.Marker({
+                  position: { lat: latitude, lng: longitude },
+                  map: map,
+                  icon: everyoneMarker,
+                  animation: google.maps.Animation.DROP,
+                });
+                // add click event listener to the marker
+                newMarker.addListener("click", () => {
+                  const position = newMarker.getPosition();
+                  console.log(
+                    `Marker clicked at ${position.lat()}, ${position.lng()}`
+                  );
+                });
+              }
             });
           }
 

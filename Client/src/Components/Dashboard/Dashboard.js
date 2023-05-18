@@ -13,16 +13,6 @@ function Dashboard() {
   const userEmail = location.state?.userEmail;
   const photoURL = location.state?.photoURL;
 
-  // console.log(location.state); // check the value of location.state
-  // console.log(userEmail); // check the value of userEmail
-
-  // const myObj = JSON.parse(
-  //   window.sessionStorage.getItem(
-  //     "firebase:authUser:AIzaSyCSOz8N3axDiWvLj0BGLtJXEcNkHkwmmVg:[DEFAULT]"
-  //   )
-  // );
-  // console.log(myObj);
-
   return (
     <div className="dashboard__container">
       <GoogleMaps

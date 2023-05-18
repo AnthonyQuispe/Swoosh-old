@@ -16,6 +16,10 @@ const Chat = () => {
     setShowChats(false);
   };
 
+  const handleClick = () => {
+    alert("This feature will come soon");
+  };
+
   return (
     <div className="chat__background">
       {showChats && <Chats onClose={handleCloseChats} />}
@@ -33,11 +37,14 @@ const Chat = () => {
           <h1 className="chat__header">Chat</h1>
           <div className="chat__container--all">
             <h2 className="chat__subheader chat__all">All</h2>
-            <h2 className="chat__subheader">Friends</h2>
+            <h2 className="chat__subheader" onClick={handleClick}>
+              Friends
+            </h2>
             <img
               className="chat__button--plus"
               src={PlusIcon}
               alt="back icon"
+              onClick={handleClick}
             />
           </div>
           <div className="chat__card">

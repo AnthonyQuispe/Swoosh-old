@@ -58,20 +58,23 @@
   height: 57px;
 }
 
-.carousel__button--image {
-  box-sizing: border-box;
-  width: 105px;
-  height: 70px;
-  background: #ffffff;
-  border: 3px solid #ff6916;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 20px;
-}
-
 .carousel__button {
   border: none;
-}
-.carousel__button--images {
-  border: none;
-  color: white;
+  background: none;
+
+  &--images {
+    border: none;
+    color: white;
+    height: 30px;
+  }
+
+  &--image {
+    box-sizing: border-box;
+    width: 105px;
+    height: 70px;
+    background: #ffffff;
+    border: 3px solid #ff6916;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+  }
 }

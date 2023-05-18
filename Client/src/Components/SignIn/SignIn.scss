@@ -1,3 +1,389 @@
-.sign__bottom-textcontainer-link {
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+
+.signin__bottom-textcontainer-link {
   text-decoration: none;
+  text-decoration: none;
+  font-family: "Bakbak One";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.1875rem;
+  line-height: 28px;
+  text-align: center;
+  color: #ff6b00;
+  margin: 0 10px;
+  text-shadow: -2px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+.signin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $Baby-blue;
+  height: 100vh;
+}
+
+.signin__title {
+  margin: 2rem 0;
+  color: white;
+  text-shadow: -3px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+
+  font-family: "Bakbak One";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 36px;
+  text-align: center;
+  color: #ffffff;
+}
+.signin__container {
+  margin: 1rem 0;
+}
+.signin__container--input {
+  font-size: 1.25rem;
+  border-radius: 10px;
+  width: 78vw;
+  height: 5vh;
+  padding: 0 0 0 1rem;
+
+  &::placeholder {
+    font-size: 1.25rem;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+.signin__bottom--button {
+  box-sizing: border-box;
+  width: 250px;
+  height: 50px;
+  bottom: 19%;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  border: 3px solid;
+  border-image-source: linear-gradient(to bottom, #00b2ff, #ff7a00);
+  border-image-slice: 1;
+
+  font-family: "Basement Grotesque";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 28px;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: -2px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+.signin__header {
+  font-weight: 600;
+  color: white;
+  margin: 5rem 0 0 0;
+  font-family: Basement Grotesque Display;
+  text-shadow: -6px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+.signin__name--container {
+  display: flex;
+  height: 7vh;
+}
+
+.signin__container--nameInput {
+  border-radius: 10px;
+  margin: 0 10px;
+  width: 38vw;
+  height: 5vh;
+  text-align: center;
+  font-size: 1.25rem;
+
+  &::placeholder {
+    font-size: 1.25rem;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.signin__input--container {
+  background-color: $Baby-blue;
+  height: 2rem;
+  font-size: 1.25rem;
+
+  &::placeholder {
+    font-size: 1.25rem;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.signin__back-button {
+  box-sizing: border-box;
+  width: 58px;
+  height: 58px;
+  background: #ffffff;
+  border: 3px solid #ff7c32;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  position: absolute;
+  left: 5%;
+  top: 1%;
+}
+
+.signin__back-button--arrow {
+  width: 44px;
+  height: 44px;
+}
+
+.checkbox-wrapper-19 {
+  box-sizing: border-box;
+  --background-color: #fff;
+  --checkbox-height: 25px;
+  display: flex;
+  align-items: center;
+  margin: 1rem 0 2rem 0;
+}
+
+@-moz-keyframes dothabottomcheck-19 {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: calc(var(--checkbox-height) / 2);
+  }
+}
+
+@-webkit-keyframes dothabottomcheck-19 {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: calc(var(--checkbox-height) / 2);
+  }
+}
+
+@keyframes dothabottomcheck-19 {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: calc(var(--checkbox-height) / 2);
+  }
+}
+
+@keyframes dothatopcheck-19 {
+  0% {
+    height: 0;
+  }
+  50% {
+    height: 0;
+  }
+  100% {
+    height: calc(var(--checkbox-height) * 1.2);
+  }
+}
+
+@-webkit-keyframes dothatopcheck-19 {
+  0% {
+    height: 0;
+  }
+  50% {
+    height: 0;
+  }
+  100% {
+    height: calc(var(--checkbox-height) * 1.2);
+  }
+}
+
+@-moz-keyframes dothatopcheck-19 {
+  0% {
+    height: 0;
+  }
+  50% {
+    height: 0;
+  }
+  100% {
+    height: calc(var(--checkbox-height) * 1.2);
+  }
+}
+
+.checkbox-wrapper-19 input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox-wrapper-19 .check-box {
+  height: var(--checkbox-height);
+  width: var(--checkbox-height);
+  background-color: White;
+  border: calc(var(--checkbox-height) * 0.1) solid #ff7c33;
+  border-radius: 5px;
+  position: relative;
+  display: inline-block;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-transition: border-color ease 0.2s;
+  -o-transition: border-color ease 0.2s;
+  -webkit-transition: border-color ease 0.2s;
+  transition: border-color ease 0.2s;
+  cursor: pointer;
+}
+.checkbox-wrapper-19 .check-box::before,
+.checkbox-wrapper-19 .check-box::after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: absolute;
+  height: 0;
+  width: calc(var(--checkbox-height) * 0.2);
+  background-color: $Orange;
+  display: inline-block;
+  -moz-transform-origin: left top;
+  -ms-transform-origin: left top;
+  -o-transform-origin: left top;
+  -webkit-transform-origin: left top;
+  transform-origin: left top;
+  border-radius: 5px;
+  content: " ";
+  -webkit-transition: opacity ease 0.5;
+  -moz-transition: opacity ease 0.5;
+  transition: opacity ease 0.5;
+}
+.checkbox-wrapper-19 .check-box::before {
+  top: calc(var(--checkbox-height) * 0.72);
+  left: calc(var(--checkbox-height) * 0.41);
+  box-shadow: 0 0 0 calc(var(--checkbox-height) * 0.05) var(--background-color);
+  -moz-transform: rotate(-135deg);
+  -ms-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+}
+.checkbox-wrapper-19 .check-box::after {
+  top: calc(var(--checkbox-height) * 0.37);
+  left: calc(var(--checkbox-height) * 0.05);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.checkbox-wrapper-19 input[type="checkbox"]:checked + .check-box,
+.checkbox-wrapper-19 .check-box.checked {
+  border-color: $Orange;
+}
+.checkbox-wrapper-19 input[type="checkbox"]:checked + .check-box::after,
+.checkbox-wrapper-19 .check-box.checked::after {
+  height: calc(var(--checkbox-height) / 2);
+  -moz-animation: dothabottomcheck-19 0.2s ease 0s forwards;
+  -o-animation: dothabottomcheck-19 0.2s ease 0s forwards;
+  -webkit-animation: dothabottomcheck-19 0.2s ease 0s forwards;
+  animation: dothabottomcheck-19 0.2s ease 0s forwards;
+}
+.checkbox-wrapper-19 input[type="checkbox"]:checked + .check-box::before,
+.checkbox-wrapper-19 .check-box.checked::before {
+  height: calc(var(--checkbox-height) * 1.2);
+  -moz-animation: dothatopcheck-19 0.4s ease 0s forwards;
+  -o-animation: dothatopcheck-19 0.4s ease 0s forwards;
+  -webkit-animation: dothatopcheck-19 0.4s ease 0s forwards;
+  animation: dothatopcheck-19 0.4s ease 0s forwards;
+}
+.signin__privacy {
+  margin: 0 0 0 10px;
+  font-family: "Bakbak One";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 25px;
+  text-align: center;
+
+  color: #ffffff;
+}
+
+.policy,
+.privacy {
+  text-decoration: none;
+  color: $Orange;
+  font-weight: 600;
+}
+
+.signin__backArrow {
+  height: 5vh;
+  width: 10vw;
+  left: 5%;
+  top: 1.5%;
+  position: absolute;
+}
+
+.signin__bottom-textcontainer {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  margin: 1rem 0 1rem 0;
+
+  &-text {
+    color: white;
+    font-family: "Bakbak One";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+
+    text-align: center;
+    color: #ffffff;
+  }
+
+  &-signin {
+    color: $Orange;
+    font-weight: 600;
+  }
+}
+
+.signin__bottom--forgotLink {
+  text-decoration: none;
+}
+
+.signin__bottom--forgot {
+  color: white;
+  font-family: "Bakbak One";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 25px;
+
+  text-align: center;
+
+  color: #ffffff;
+}
+
+.signin__button--google-img {
+  height: 5vh;
+  margin: 0 1rem;
+}
+
+.signin__button--google {
+  width: 350px;
+  height: 67px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: black solid 2px;
+  margin: 1rem 0;
+  font-family: "Bakbak One";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 29px;
+  text-align: center;
+  color: #7c7c7c;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
 }

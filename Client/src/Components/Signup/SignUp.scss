@@ -10,8 +10,12 @@
 }
 
 .sign__title {
-  margin: 2rem 0;
+  margin: 1rem 0;
   color: white;
+  font-weight: 600;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+  font-family: "Basement Grotesque";
 }
 .sign__container {
   margin: 1rem 0;
@@ -22,6 +26,8 @@
   width: 78vw;
   height: 5vh;
   padding: 0 0 0 1rem;
+  border: black solid 2px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
   &::placeholder {
     font-size: 1.25rem;
@@ -32,39 +38,53 @@
 }
 
 .sign__button {
-  margin: 7vh 0;
+  box-sizing: border-box;
+  position: absolute;
+  width: 250px;
+  height: 50px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 75vw;
-  height: 6vh;
-  color: white;
-  font-size: 1.25rem;
-  background-color: $Orange;
+  border: 3px solid;
+  bottom: 19%;
+  border-image-source: linear-gradient(to bottom, #00b2ff, #ff7a00);
+  border-image-slice: 1;
+  font-family: "Basement Grotesque";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 28px;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: -2px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 
 .sign__header {
   font-weight: 600;
   color: white;
-  margin: 5rem 0 0 0;
+  margin: 0.8rem 0 0 0;
+  font-size: 2rem;
   font-family: Basement Grotesque Display;
   text-shadow: -6px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
     1px 1px 0 #000;
+  margin: auto;
 }
 
 .sign__name--container {
   display: flex;
-  height: 7vh;
+  height: 7%;
 }
 
-.sign__container--nameInput {
+.sign__container--name-input {
   border-radius: 10px;
   margin: 0 10px;
   width: 38vw;
   height: 5vh;
   text-align: center;
   font-size: 1.25rem;
+  border: black solid 2px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
   &::placeholder {
     font-size: 1.25rem;
@@ -89,16 +109,129 @@
   }
 }
 
-.checkbox-wrapper-19 {
+.sign__privacy {
+  margin: 0 0 0 10px;
+  color: white;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+  font-family: "Bakbak One";
+  font-size: 22px;
+  line-height: 31px;
+}
+
+.policy,
+.privacy {
+  text-decoration: none;
+  font-family: "Bakbak One";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.1875rem;
+  line-height: 28px;
+  text-align: center;
+  color: #ff6b00;
+  margin: 0 0.3125rem;
+  text-shadow: -2px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+.sign__back-arrow {
+  width: 44px;
+  height: 44px;
+}
+
+.sign__bottom-textcontainer {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  margin: 1rem 0 1rem 0;
+  position: absolute;
+  bottom: 12%;
+
+  &--text {
+    margin: 0 8px 0 0;
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+      1px 1px 0 #000;
+    font-family: "Bakbak One";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.1875rem;
+    line-height: 27px;
+  }
+
+  &--signin {
+    color: $Orange;
+  }
+  &--link {
+    text-decoration: none;
+    font-family: "Bakbak One";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.1875rem;
+    line-height: 28px;
+    text-align: center;
+    color: #ff6b00;
+    margin: 10px;
+    text-shadow: -2px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+      1px 1px 0 #000;
+  }
+}
+
+.sign__top--containter {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+}
+
+.sign__button--google-img {
+  height: 5vh;
+  margin: 0 1rem;
+}
+
+.sign__button--google {
+  width: 350px;
+  height: 67px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: black solid 2px;
+  position: absolute;
+  bottom: 3%;
+  font-family: "Bakbak One";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 29px;
+  text-align: center;
+  color: #7c7c7c;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+}
+
+.sign__back-arrow--button {
+  box-sizing: border-box;
+  width: 58px;
+  height: 58px;
+  margin: 0.2rem 0 0 0.5rem;
+  background: #ffffff;
+  border: 3px solid #ff7c32;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+}
+
+.checkbox-wrapper-20 {
   box-sizing: border-box;
   --background-color: #fff;
   --checkbox-height: 25px;
   display: flex;
   align-items: center;
   margin: 1rem 0 0 0;
+  position: absolute;
+  bottom: 26%;
 }
 
-@-moz-keyframes dothabottomcheck-19 {
+@-moz-keyframes dothabottomcheck-20 {
   0% {
     height: 0;
   }
@@ -107,7 +240,7 @@
   }
 }
 
-@-webkit-keyframes dothabottomcheck-19 {
+@-webkit-keyframes dothabottomcheck-20 {
   0% {
     height: 0;
   }
@@ -116,7 +249,7 @@
   }
 }
 
-@keyframes dothabottomcheck-19 {
+@keyframes dothabottomcheck-20 {
   0% {
     height: 0;
   }
@@ -125,7 +258,7 @@
   }
 }
 
-@keyframes dothatopcheck-19 {
+@keyframes dothatopcheck-20 {
   0% {
     height: 0;
   }
@@ -137,7 +270,7 @@
   }
 }
 
-@-webkit-keyframes dothatopcheck-19 {
+@-webkit-keyframes dothatopcheck-20 {
   0% {
     height: 0;
   }
@@ -149,7 +282,7 @@
   }
 }
 
-@-moz-keyframes dothatopcheck-19 {
+@-moz-keyframes dothatopcheck-20 {
   0% {
     height: 0;
   }
@@ -161,16 +294,16 @@
   }
 }
 
-.checkbox-wrapper-19 input[type="checkbox"] {
+.checkbox-wrapper-20 input[type="checkbox"] {
   display: none;
 }
 
-.checkbox-wrapper-19 .check-box {
+.checkbox-wrapper-20 .check-box {
   height: var(--checkbox-height);
   width: var(--checkbox-height);
   background-color: White;
   border: calc(var(--checkbox-height) * 0.1) solid #000;
-  border-radius: 5px;
+  border-radius: 8px;
   position: relative;
   display: inline-block;
   -moz-box-sizing: border-box;
@@ -182,8 +315,8 @@
   transition: border-color ease 0.2s;
   cursor: pointer;
 }
-.checkbox-wrapper-19 .check-box::before,
-.checkbox-wrapper-19 .check-box::after {
+.checkbox-wrapper-20 .check-box::before,
+.checkbox-wrapper-20 .check-box::after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -203,7 +336,7 @@
   -moz-transition: opacity ease 0.5;
   transition: opacity ease 0.5;
 }
-.checkbox-wrapper-19 .check-box::before {
+.checkbox-wrapper-20 .check-box::before {
   top: calc(var(--checkbox-height) * 0.72);
   left: calc(var(--checkbox-height) * 0.41);
   box-shadow: 0 0 0 calc(var(--checkbox-height) * 0.05) var(--background-color);
@@ -213,7 +346,7 @@
   -webkit-transform: rotate(-135deg);
   transform: rotate(-135deg);
 }
-.checkbox-wrapper-19 .check-box::after {
+.checkbox-wrapper-20 .check-box::after {
   top: calc(var(--checkbox-height) * 0.37);
   left: calc(var(--checkbox-height) * 0.05);
   -moz-transform: rotate(-45deg);
@@ -223,57 +356,23 @@
   transform: rotate(-45deg);
 }
 
-.checkbox-wrapper-19 input[type="checkbox"]:checked + .check-box,
-.checkbox-wrapper-19 .check-box.checked {
+.checkbox-wrapper-20 input[type="checkbox"]:checked + .check-box,
+.checkbox-wrapper-20 .check-box.checked {
   border-color: $Orange;
 }
-.checkbox-wrapper-19 input[type="checkbox"]:checked + .check-box::after,
-.checkbox-wrapper-19 .check-box.checked::after {
+.checkbox-wrapper-20 input[type="checkbox"]:checked + .check-box::after,
+.checkbox-wrapper-20 .check-box.checked::after {
   height: calc(var(--checkbox-height) / 2);
   -moz-animation: dothabottomcheck-19 0.2s ease 0s forwards;
   -o-animation: dothabottomcheck-19 0.2s ease 0s forwards;
   -webkit-animation: dothabottomcheck-19 0.2s ease 0s forwards;
   animation: dothabottomcheck-19 0.2s ease 0s forwards;
 }
-.checkbox-wrapper-19 input[type="checkbox"]:checked + .check-box::before,
-.checkbox-wrapper-19 .check-box.checked::before {
+.checkbox-wrapper-20 input[type="checkbox"]:checked + .check-box::before,
+.checkbox-wrapper-20 .check-box.checked::before {
   height: calc(var(--checkbox-height) * 1.2);
   -moz-animation: dothatopcheck-19 0.4s ease 0s forwards;
   -o-animation: dothatopcheck-19 0.4s ease 0s forwards;
   -webkit-animation: dothatopcheck-19 0.4s ease 0s forwards;
   animation: dothatopcheck-19 0.4s ease 0s forwards;
-}
-.sign__privacy {
-  margin: 0 0 0 10px;
-}
-
-.policy,
-.privacy {
-  text-decoration: none;
-  color: $Orange;
-  font-weight: 600;
-}
-
-.sign__backArrow {
-  height: 5vh;
-  width: 10vw;
-  left: 5%;
-  top: 1.5%;
-  position: absolute;
-}
-
-.sign__bottom-textcontainer {
-  display: flex;
-  width: 100vw;
-  justify-content: center;
-  margin: 1rem 0 1rem 0;
-
-  &-text {
-    margin: 0 8px 0 0;
-    color: white;
-  }
-
-  &-signin {
-    color: $Orange;
-  }
 }

@@ -1,13 +1,21 @@
 import "./SignUp.scss";
-import backArrow from "../../assets/Icons/previous.png";
-import { Link } from "react-router-dom";
+import backArrow from "../../assets/Icons/Left-Arrow.png";
+import GoogleIcon from "../../assets/Icons/google.png";
+import { Link, useNavigate } from "react-router-dom";
 import { createUser } from "../../firebaseAuth";
-import { useState } from "react";
-import { useNavigate } from "react-router";
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  setPersistence,
+  browserSessionPersistence,
+} from "firebase/auth";
+import { auth, db } from "../../firebase-config";
+import { doc, setDoc } from "firebase/firestore";
 
 const SignUp = () => {
-  // const [RouteSign, setRouteSign] = useState(false);
   let navigate = useNavigate();
+  const provider = new GoogleAuthProvider();
+
   //Validates form before passing it to Firebase Autentication
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -16,6 +24,7 @@ const SignUp = () => {
     const email = event.target.email.value;
     const password = event.target.password.value;
     const confirmPassword = event.target.confirmPassword.value;
+    const username = event.target.username.value;
 
     //Front-End Validation
     if (!firstName || !lastName) {
@@ -33,22 +42,61 @@ const SignUp = () => {
     }
     //Firebase Autentication
     try {
-      await createUser(firstName, lastName, email, password);
+      await createUser(firstName, lastName, email, password, username);
       alert("Account created successfully!");
       // setRouteSign(true);
-      navigate("/");
+      navigate("/dashboard", {
+        state: {
+          email: auth.currentUser.email,
+          displayName: auth.currentUser.displayName,
+        },
+      });
     } catch (error) {
       alert("Account creation failed please try again");
     }
   };
 
+  //Sign in/up using Google Feature
+
+  const signInWithGoogle = () => {
+    setPersistence(auth, browserSessionPersistence);
+    signInWithPopup(auth, provider)
+      .then(async (result) => {
+        const user = result.user;
+        const userRef = doc(db, "users", user.uid);
+
+        const userData = {
+          email: user.email,
+          photoURL: user.photoURL,
+        };
+
+        // Use setDoc to update the user document with the userData object
+        await setDoc(userRef, userData, { merge: true });
+
+        navigate("/dashboard", {
+          state: {
+            userEmail: auth.currentUser.email,
+            photoURL: user.photoURL,
+            displayName: user.displayName,
+          },
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <form onSubmit={handleSubmit} className="sign">
-      <Link to={`/`}>
-        <img className="sign__backArrow" src={backArrow} alt="back icon" />
-      </Link>
-      {/* {RouteSign && <Link to="/"></Link>} */}
-      <h1 className="sign__header">Swoosh</h1>
+      <div className="sign__top--containter">
+        <Link to={`/`}>
+          <button className="sign__back-arrow--button">
+            <img className="sign__back-arrow" src={backArrow} alt="back icon" />
+          </button>
+        </Link>
+        <h1 className="sign__header">Swoosh</h1>
+      </div>
+
       <h3 className="sign__title">Create your Account </h3>
       <div className="sign__name--container">
         <div className="sign__input--container">
@@ -58,7 +106,7 @@ const SignUp = () => {
             id="firstName"
             placeholder="First Name"
             required
-            className="sign__container--nameInput"
+            className="sign__container--name-input"
           />
         </div>
         <div className="sign__input--container">
@@ -68,11 +116,20 @@ const SignUp = () => {
             id="lastName"
             placeholder="Last Name"
             required
-            className="sign__container--nameInput"
+            className="sign__container--name-input"
           />
         </div>
       </div>
-
+      <div className="sign__container">
+        <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Username"
+          required
+          className="sign__container--input"
+        />
+      </div>
       <div className="sign__container">
         <input
           type="email"
@@ -91,6 +148,7 @@ const SignUp = () => {
           placeholder="Password"
           required
           className="sign__container--input"
+          minLength={6}
         />
       </div>
       <div className="sign__container">
@@ -103,31 +161,38 @@ const SignUp = () => {
           className="sign__container--input"
         />
       </div>
-      <div className="checkbox-wrapper-19">
+      <div className="checkbox-wrapper-20">
         <input type="checkbox" id="checkbox" required name="checkbox" />
         <label htmlFor="checkbox" className="check-box" value />
         <label className="sign__privacy">
-          I Agree with{" "}
+          I agree with
           <Link to="/privacy" className="privacy">
             privacy
-          </Link>{" "}
-          and{" "}
+          </Link>
+          and
           <Link to="/policy" className="policy">
             policy
           </Link>
         </label>
       </div>
-      <button className="sign__button">Continue</button>
 
+      <button className="sign__button">CONTINUE</button>
       <div className="sign__bottom-textcontainer">
-        <p className="sign__bottom-textcontainer-text">
+        <p className="sign__bottom-textcontainer--text">
           Already have an account?
+          <Link to={`/signin`} className="sign__bottom-textcontainer--link">
+            Sign In
+          </Link>
         </p>
-        <Link to={`/signin`} className="sign__bottom-textcontainer-link">
-          {" "}
-          <p className="sign__bottom-textcontainer-signin">Sign In</p>
-        </Link>
       </div>
+      <button onClick={signInWithGoogle} className="sign__button--google">
+        <img
+          className="sign__button--google-img"
+          src={GoogleIcon}
+          alt="back icon"
+        />
+        <p>Sign up with Google</p>
+      </button>
     </form>
   );
 };

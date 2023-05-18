@@ -1,33 +1,95 @@
-img[src*="Facetune"] {
-  border: 2px solid red;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+
+img[src*="https://lh3.googleusercontent.com/"]
+{
   border-radius: 50%;
   height: 100px;
   width: 100px;
 }
 
-.google__button {
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 120px;
-  height: 30px;
+img[src*="https://ca.slack-edge.com/"]
+{
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+}
+
+.google__create {
+  &--image {
+    height: 30px;
+    width: 30spx;
+  }
+
+  &--text {
+    color: #ff7a00;
+    font-family: "Basement Grotesque";
+    font-style: normal;
+    font-weight: 900;
+    font-size: 1.25rem;
+    line-height: 28px;
+    text-align: center;
+  }
+}
+
+/* CSS */
+.google__create {
+  right: 0%;
+  left: 0%;
   border: none;
-  background-color: white;
-  color: #00c0fe;
-  margin: 20px auto;
+  outline: none;
+  width: 200px;
+  height: 45px;
+  color: rgb(255, 255, 255);
+  background: #111;
+  cursor: pointer;
   position: absolute;
-  z-index: 3;
-  bottom: 17vw;
+  z-index: 1;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  bottom: 15%;
+  margin: 20px auto;
+}
+
+.google__create:before {
+  content: "";
+  background: linear-gradient(45deg, #00b2ff, #ff7a00);
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing-button-85 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+@keyframes glowing-button-85 {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.google__create:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: white;
   left: 0;
-  right: 0;
-}
-
-.google__button--image {
-  height: 30px;
-  width: 30spx;
-}
-
-.google__button--text {
-  font-size: 1rem;
+  top: 0;
+  border-radius: 10px;
 }

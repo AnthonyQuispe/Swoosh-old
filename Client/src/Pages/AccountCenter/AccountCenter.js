@@ -12,9 +12,7 @@ const AccountCenter = () => {
     e.preventDefault();
 
     sendPasswordResetEmail(email, setEmail)
-      .then(() => {
-        console.log("Password reset email sent!");
-      })
+      .then(() => {})
       .catch((error) => {
         console.error(error);
       });

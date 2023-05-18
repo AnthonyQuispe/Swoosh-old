@@ -18,8 +18,6 @@ const Profile = () => {
       }
 
       const uid = user.uid;
-      console.log("user", user);
-      console.log("user", uid);
 
       const docRef = doc(db, "users", uid);
       const docSnap = await getDoc(docRef);
